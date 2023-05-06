@@ -1,0 +1,35 @@
+package do_it_exProSolve;
+
+public class 피라미드형_별출력 {
+
+	public static void main(String[] args)int lineCount = 5;       // 총 5 줄(층)의 피라미드
+		int starCount = 1;       //각 줄에 출력될 별 개수
+		int spaceCount = lineCount/2 + 2 ;   
+		/*꽉찬 맨 밑줄의 개수가 9개 -> 한줄의 공간은 총 9칸
+		첫줄을 생각했을 때 *이 출력되는 한칸을 뺴면 8칸의 공간이 빈칸으로 채워져야한다
+		8칸 중 오른쪽4칸 왼쪽 4칸으로 나뉘어져야함
+		오른쪽 공백 코드와 왼쪽 공백코드를 따로 만들어 줘야한다
+		즉, 왼쪽/오른쪽 공백은  총 5층(줄) /2 = 4 가 되야한다
+		
+		*/
+		
+		for(int i = 0; i<lineCount; i++) {
+			
+			for(int j = 0; j<spaceCount; j++) {
+				System.out.print(' ');
+			}
+			for(int j=0; j<starCount; j++) {
+				System.out.print('*');
+			}
+			for(int j = 0; j<spaceCount; j++) {
+				System.out.print(' ');
+			}
+			spaceCount-=1;   // 오른쪽/왼쪽 한쪽당 한개씩 총 두개의 빈칸이 줄어들게 함
+			starCount+=2;    //별의 개수는 2개씩 증가
+			System.out.println();
+	}
+		
+
+	}
+
+}
