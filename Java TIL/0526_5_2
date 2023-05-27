@@ -1,0 +1,75 @@
+package sstStudy;
+
+import java.util.Scanner;
+
+class Person9{
+	private String name;
+	private int age;
+	private String job;
+	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public int getAge() {
+		return this.age;
+	}
+	
+	public void setAge(int age) {
+		this.age =age;
+		
+	}
+	
+	public String getJob() {
+		return this.job;
+	}
+	
+	public void setJob(String job) {
+		this.job = job;
+	}
+	
+	//프로그램 종료여부 판단과 정보 출력
+	public boolean msgPrint() {
+		if(getName().equals("끝")) {//메서드를 이용
+			System.out.println("프로그램을 종료합니다.");
+			return true;
+		}
+		else {
+			System.out.println(getName() + "의 나이는 "+ getAge() + "살이며, 직업은 "+ getJob() +"입니다.");
+			return false; //false 를 넘겨줌으로써 무한 루프가 되도록한다.  메서드의 반환타입이 boolean이므로
+		}
+	}
+}		
+
+public class TEST {
+
+	public static void main(String[] args) {
+		Scanner scn =new Scanner(System.in);
+		
+		Person9 p =new Person9();
+		String tmp ="  홍 길동   ";
+		
+		
+		while(true) {
+			System.out.print("이름은>");
+			p.setName(scn.nextLine().replace(" ",""));
+			
+			System.out.print("나이는 >");
+			p.setAge(scn.nextInt());
+		
+			System.out.print("직업은 >");
+			p.setJob(scn.next());
+			
+			scn.nextLine();
+			
+	
+			if(p.msgPrint()) {//msgPrint()메서드안에 이미 구현되어 있기 때문에 멈추는 것만 구현해주면 됨
+				break;
+			}
+		}
+	}
+
+}
