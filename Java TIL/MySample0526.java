@@ -1,6 +1,5 @@
 package sstStudy;
 
-
 class Card2{
 	//인스턴스 변수
 	//상수에대한 이름은 전부 대문자로 한다.
