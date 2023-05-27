@@ -1,7 +1,7 @@
 package sstStudy;
 
 class Card2{
-	//인스턴스 변수
+	//클래스 변수 이면서 상수
 	//상수에대한 이름은 전부 대문자로 한다.
 	static final int KIND_MAX = 4; //카드 무늬수
 	static final int NUM_MAX = 13; //무늬별 카드수
