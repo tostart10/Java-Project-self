@@ -32,6 +32,7 @@ class Monkey extends Animal2{
 class ZooKeeper{
 	//메서드 오버로딩 -하나의 클래스에 매서드명이 동일, 매개변수의 개수, 데이터 타입이 다름
 	//자식 클래스의 메서드
+	//중복이 많은 코드 -> Lion2, Rabbit, Monkey에 대한 객체를 일일이 생성하고 그에 대한 메서드를 생성해줘야하므로 중복코드가 발생함
 /*	void feed(Lion2 lion) {
 		System.out.println(lion + "에게 먹이주기...");
 	}
@@ -43,6 +44,7 @@ class ZooKeeper{
 	}
 */	
 	//다형성을 위한 메서드
+	//Animal2를 상속받은 모든 클래스형은 전부 쓸수 있기 때문에 중복이 줄어든다
 	void feed(Animal2 animal) {  //이 feed 메서드는 amimal, Lion2,Rabbit, Monkey 데이터형 모두 받을 수 있다
 		System.out.println(animal + "에게 먹이주기..."); //toSring()메서드를 호출함
 		//위의 Animal 클래스에서 toString()메서드를 오버라이딩했기 때문에 Object의 toSring()이 아닌 Animal클래스의 toSring()이 호출됨
@@ -66,7 +68,7 @@ public class MySample0530_4 {
 	*/	
 		
 		//다형성
-		//toString의 최고 조상은 Object이기 떄문에
+		//toString의 최고 조상은 Object이기 때문에
 		Animal2 lion1 = new Lion2();  //참조형 데이터타입을 Animal2로 함, 얘네는 위의 메서드를 사용할 수 없다
 		j.feed(lion1);    //new Lion2()자식 클래스의 메서드이기 때문에 부모클래스인 Animal2에서는 사용할 수 없다
 		
@@ -80,4 +82,3 @@ public class MySample0530_4 {
 	}
 
 }
-
