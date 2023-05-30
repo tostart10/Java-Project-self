@@ -68,9 +68,10 @@ public class MySample0530_4 {
 	*/	
 		
 		//다형성
-		//toString의 최고 조상은 Object이기 때문에
-		Animal2 lion1 = new Lion2();  //참조형 데이터타입을 Animal2로 함, 얘네는 위의 메서드(주석처리된 부문인 void feed(Lion2 lion)...)를 사용할 수 없다
-		j.feed(lion1);    //new Lion2()자식 클래스의 메서드이기 때문에 부모클래스인 Animal2에서는 사용할 수 없다
+		//참조형 데이터타입을 Animal2로 함, 얘네는 위의 메서드(주석처리된 부문인 void feed(Lion2 lion)...)를 사용할 수 없다
+		//new Lion2()자식 클래스의 메서드이기 때문에 부모클래스인 Animal2에서는 사용할 수 없다
+		Animal2 lion1 = new Lion2();  
+		j.feed(lion1);    
 		
 		Animal2 rabbit = new Rabbit();
 		j.feed(rabbit);
