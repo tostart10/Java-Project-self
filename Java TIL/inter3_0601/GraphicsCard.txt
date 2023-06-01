@@ -1,0 +1,15 @@
+package inter3;
+
+public interface GraphicsCard {
+
+	//제조사
+	public String company(); //abstract 모두 생략된거임
+	
+	//모델
+	public String model();
+	//메모리
+	public int memory();
+	//출력
+	public void write(PointColor pointColor);
+	
+}

@@ -1,0 +1,42 @@
+package inter3;
+
+public class GraphicsCardMain {
+
+	//운영체제에서 그래픽 출력
+	public void operatingSystemWrite(GraphicsCard gaphicsCard, PointColor pointColor) { //객체생성해서 써라
+	//GraphicsCard의 데이터형의 매개변수를 받는 다는 것은 이것을 호출하기 전에 new NvidiaGeforce나 new AmdRadeon이 되어있을 것이라는 전제하에 쓰인것
+	//PointColor는 new PointColor로 객체 생성되어야함
+		
+		if(gaphicsCard != null) {
+			System.out.println("그래픽 카드 출력");
+			System.out.println("회사명 : " +  gaphicsCard.company());
+			System.out.println("모델명 : " +gaphicsCard.model());
+			System.out.println("메모리 : " + gaphicsCard.memory());
+			gaphicsCard.write(pointColor);
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		//인터페이스 예제
+		//라데온 그래픽 카드 생성
+		GraphicsCard amdRadeon = new AmdRadeon("Rx 5000", 4096);
+		
+		//엔디비아 크래픽 카드 생성
+		NvidiaGeforce nvidiaGeForce =new NvidiaGeforce("Gefpre GT 710", 2048);
+		
+		//포인트 컬러 생성
+		PointColor pointColor = new PointColor();
+		pointColor.setX(100);
+		pointColor.setY(200);
+		pointColor.setRgb(new Rgb(255,128,100));
+		
+		GraphicsCardMain gCardMain = new GraphicsCardMain();
+		gCardMain.operatingSystemWrite(nvidiaGeForce, pointColor);
+		
+		System.out.println();
+		
+		gCardMain.operatingSystemWrite(nvidiaGeForce, pointColor);
+	}
+
+}

@@ -1,0 +1,56 @@
+package inter3;
+
+public class NvidiaGeforce implements GraphicsCard{
+	
+	private String company;
+	private String model;
+	private int memory;
+	
+	public NvidiaGeforce(String model, int memory) {
+		company = "NVIDIA";
+		this.model = model;
+		this.memory =memory;
+	}
+	
+	public String company() {
+		
+		return company;
+	}
+	
+	//모델
+	public String model() {
+		
+		return model;
+	}
+	//메모리
+	public int memory() {
+		
+		return memory;
+	}
+	//출력
+	public void write(PointColor pointColor) {
+		
+		if(pointColor != null) {
+			Rgb rgb = pointColor.getRgb();
+			
+			System.out.println("---" + company + " GraphicsCard 출력");
+			System.out.println("1.좌표를 구한다.");
+			System.out.println("x : "+ pointColor.getX());
+			System.out.println("Y : "+ pointColor.getY());
+			System.out.println("2.color 구성.");
+			
+			if(rgb != null) {
+				System.out.println("Red : " + rgb.getRed()); //pointColor.getRgb().getRed()
+				System.out.println("Green : " + rgb.getGreen());
+				System.out.println("Blue : " + rgb.getBlue());
+				
+				System.out.println("3.모니터 좌표에 색상 출력.");
+				
+				
+				
+			}
+			
+		}
+	}
+	
+}

@@ -1,0 +1,46 @@
+package inter3;
+
+public class Rgb {
+
+	private int red;
+	private int green;
+	private int blue;
+	
+	public Rgb() {
+		
+	}
+	
+	public Rgb(int red, int green, int blue){
+		this.blue =blue;
+		this.green = green;
+		this.red =red;
+	}
+	
+	public int getRed() {
+		return this.red;
+	}
+	
+	public void setRed(int red) {
+		this.red = red;
+	}
+
+	public int getGreen() {
+		return green;
+	}
+
+	public void setGreen(int green) {
+		this.green = green;
+	}
+
+	public int getBlue() {
+		return blue;
+	}
+
+	public void setBlue(int blue) {
+		this.blue = blue;
+	}
+	
+	
+	
+	
+}

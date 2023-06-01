@@ -1,0 +1,61 @@
+package inter3;
+
+public class AmdRadeon implements GraphicsCard{
+
+	
+	private String company;  //제조사
+	private String model; 	//모델
+	private int memory; 	//메모리
+	
+	
+	public AmdRadeon(String model, int memory) {
+		
+		company = "AMD";
+		this.model = model;
+		this.memory = memory;
+	}
+	
+	public String company() {
+		
+		return company;
+	}
+	
+	//모델
+	public String model() {
+		return model;
+	}
+	//메모리
+	public int memory() {
+		return memory;
+	}
+	//출력
+	public void write(PointColor pointColor) { //x,y,rgbColor가 필요하기 때문에 PointColor형으로 받음
+	
+		
+		if(pointColor != null) {
+			Rgb rgb = pointColor.getRgb(); //같은 곳을 바라보게 주소값을 대입함
+			System.out.println("---" + company + "GraphicsCard 출력");
+			System.out.println("1. color를 구성한다.");
+			
+			if(rgb != null) {
+				System.out.println("Blue : " + pointColor.getRgb().getBlue());
+				//pointColor.getRgb()를 rgb. 으로 바꿀수 있다 => Rgb rgb = pointColor.getRgb();로 rgb에 참조주소값을 보냈기 때문
+				//rgb.getBlue() 가능
+				
+				System.out.println("Red : " + pointColor.getRgb().getRed());
+				//pointColor.getRgb()를 rgb. 으로 바꿀수 있다 => Rgb rgb = pointColor.getRgb();로 rgb에 참조주소값을 보냈기 때문
+				//rgb.getRed() 가능
+				System.out.println("Green : " + pointColor.getRgb().getGreen());
+				//pointColor.getRgb()를 rgb. 으로 바꿀수 있다 => Rgb rgb = pointColor.getRgb();로 rgb에 참조주소값을 보냈기 때문
+				//rgb.getGreen() 가능
+			}
+			
+			System.out.println("2. 좌표를 구한다.");
+			System.out.println("x : " + pointColor.getX());
+			System.out.println("y : " + pointColor.getY());
+			System.out.println("3. 여기서 모니터 좌표에 색상 출력");
+			
+			
+		}
+	}
+}
