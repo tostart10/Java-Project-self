@@ -1,0 +1,48 @@
+package inter2;
+
+public class MyClassMain {
+
+	public static void main(String[] args) {
+		//인터페이스
+		/*
+		 * 출력예)111111111
+		 * TV를 켭니다.
+		 * 현재 TV볼륨 : 5
+		 * 222222
+		 * Audio를 켭니다.
+		 * 핸재 Audio볼륨 : 5
+		 * 33333333
+			Audio를 켭니다.
+		 * 핸재 Audio볼륨 : 5
+		 * 444444444
+		 * TV를 켭니다.
+		 * 현재 TV볼륨 : 5
+		 */
+		
+		System.out.println("11111111");
+		//new MyClass();
+		MyClass myClass1 =new MyClass();  //이렇게 하면 MyClass클래스안의 기본 생성자가 호출되는데 그 기본생성자는 RemoteControl rc = new Television();
+		//여서 new Television()클래스를 가르킨다
+		//Television()클래스의 객체 주소값을 가진 rc를 통해서 Television클래스 안의 turnOn()메서드에 접근하는 것이다.
+		myClass1.rc.turnOn();  //RemoteControl rc = new Television();로 생성된 rc는 Televion클래스를 가르킨다
+		myClass1.rc.setVolume(5);
+	
+		//오버라이딩하면 부모클래스는 자식클래스의 오버라이딩한 메서드르 가르키게된다
+		
+		System.out.println("2222222");
+		Audio a = new Audio();
+		MyClass myClass2 = new MyClass(a);
+		
+		System.out.println("3333333");
+		MyClass myClass3 = new MyClass();  //MyClass클래스에 대한 객체를 생성했으므로 Myclass의 생성자를 호출함
+		myClass3.methodA();
+		
+		System.out.println("444444");
+		MyClass myClass4 = new MyClass();
+		myClass4.methodB(new Television()); //객체 생성하고 그 인스턴스 주소값을 매개변수로보냄
+		//Television과 remoteControl 형으로 받을 수있다
+		//myClass.rc 는MyClass의 RemoteControl rc = new Television();의 rc를 의미함
+		
+	}
+
+}

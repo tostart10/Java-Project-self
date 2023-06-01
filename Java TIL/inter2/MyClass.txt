@@ -1,0 +1,40 @@
+package inter2;
+
+public class MyClass {
+
+	RemoteControl rc = new Television();
+	
+	MyClass(){ //매개변수 없는 기본생성자가 가르키는 rc는 RemoteControl rc = new Television();를 가르킴
+		
+	}
+	
+	//다형성
+	//다형성으로 인스턴스 변수 rc는 new Televition객체의 주소,  new Audio객체의 주소를 담을 수도 있게 된다
+	MyClass(RemoteControl rc){
+		//여기는 television을 받음
+		//다형성 때문에 참조형 타입의  rc를 받는데  new하고 Television, Audio로 객체 생성을 할 수 있다
+		this.rc =rc;  //this.rc와 밑의 코드 rc는 같은거를 바라보기때문에 같은거임
+		//지금 rc는 Audio 임
+		rc.turnOn(); //this.rc.turnOn(); 를해도됨 -> this. 와 rc.는 같은 곳을 바라보고 잇기 떄문
+		rc.setVolume(7);
+		//여기의 rc(this가 뜻 하는것은) RemoteControl rc = new Television();의 rc임
+		System.out.println("생성자 에서 실행");
+		this.rc.turnOn();
+		this.rc.setVolume(5);
+		
+	}
+	
+	void methodA() {
+		RemoteControl rc = new Audio();
+		rc.turnOn();   
+		rc.setVolume(8);
+		//여기의 rc는 RemoteControl rc = new Audio();에서의 rc임 주의 !!
+	}
+	
+	void methodB(RemoteControl rc) { //상속받았기 때문에 부모인RemoteControl 형태로 써주면 자식 데이터형인 televison과 Audio가 들어와도 쓸수 있게되는 것임
+		 //여기의 rc는 매개변수 rc -> new televisoin으로 넘겨줬기 떄문에 형태가 television 이다
+		rc.turnOn();
+		rc.setVolume(9);
+		
+	}
+}

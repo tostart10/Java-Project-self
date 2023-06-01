@@ -1,0 +1,32 @@
+package inter2;
+
+public class Audio implements RemoteControl{
+
+	private int volume;
+	
+	public int getVolume() {
+		return this.volume;
+	}
+	
+	public void turnOn() { //메서드 오버라이딩은 선언부가 일치해야하기 때문에 public은 꼭 붙여줘야한다
+		System.out.println("Audio를 켭니다.");
+	}
+	public void turnOff() {
+		System.out.println("Audio를 끕니다.");
+	}
+	public void setVolume(int volume) {
+		if(volume > MAX_VOLUME ) {
+			this.volume = MAX_VOLUME;  //10보다 큰값이 들어가있어도 결국 10 :최대를 10으로 제한한거임
+		}
+		else if(volume < MIN_VOLUME) {
+			this.volume = MIN_VOLUME;//0보다 작은 값이 들어가 있어도 결국0 :최소를 0으로 정해놓은 거임
+		}
+		else {
+			this.volume = volume;
+		}
+		
+		System.out.println("현재 오디오 볼륨은 : " + this.volume);  // this.volume 보다getVolume()을 쓰는게 더 좋다
+		//if문이다 다른 곳에 로직이 더 있다면 문제가 될 수도 있음
+	}
+
+}
