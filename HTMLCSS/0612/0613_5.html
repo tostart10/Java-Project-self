@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>id, class선택자</title>
+
+    <!--overflow : hidden (내용이 넘치면 자름. 자른 부분은 안보임)
+    float : lett (정렬-왼쪽)-->
+    <style>
+        #memo{
+            color: red;
+            font-size: 30px;
+        }
+        #header{
+            width: 800px;
+            margin: 0 auto;
+            background-color: aquamarine;
+        }
+
+        
+        #wrap{
+            width: 800px; margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #aside{
+            width: 200px; float: left;
+            background-color: mediumslateblue;
+        }
+
+        #content{
+            width: 600px; float: left;
+            background-color: palevioletred;
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+    <h1>id 선택자</h1>
+    <div id="memo">
+        red
+    </div>
+    <div id="memo2">
+        red2
+    </div>
+    -->
+    <!--아이디가 순서대로 적용-->
+    <div id="header">
+        <h1>#header 태그 적용</h1>
+    </div>
+    <div id="wrap">
+        <div id="aside">
+            <h1>#aside태그 적용</h1>
+        </div>
+        <div id="content">
+            <h1>#content 태그 적용</h1>
+        </div>
+    </div>
+
+
+</body>
+</html>
