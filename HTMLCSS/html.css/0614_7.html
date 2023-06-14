@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>평행 이동 변환하기</title>
+    <style>
+        /*
+        div{
+            width: 200px;
+            height: 100px;
+            border: 1px dotted black;
+            background-color: yellow;
+        }
+
+        div#box2{
+            transform:  translate(100px, 50px);
+        }
+        */
+
+        /*2번. 회전변환*/
+     /*   div{
+            width: 100px; height: 100px; border: 1px dotted  black;
+            background-color: lightblue; margin: 30px;
+        }
+        div#box1{transform: rotate(45deg);}
+        div#box2{transform: rotate(-90deg);}
+        */
+
+        /* 3번. 기울기 변환*/
+        div{width: 100px; height: 100px; border: 1px dotted black;
+            background-color: lightgreen; margin: 50px;}
+        
+        div#box1{transform:  skewX(50deg);}
+        div#box2{transform:  skewY(-30deg);}
+        div#box3{transform:  skew(20deg, 10deg);}
+
+
+
+    </style>
+</head>
+<body>
+    <!--
+    <div id="box1">
+        박스1
+    </div>
+    <div id="box2">
+        박스2
+    </div>
+    -->
+
+    <!--2번. 회전변환
+    <div>
+        기본박스(0deg)
+    </div>
+    <div id="box1">
+        박스1 (45deg)
+    </div>
+    <div id="box2">
+        박스2 (-90deg)
+    </div>
+    //-->
+
+    <!--3번. 기울기 변환-->
+    <div>
+        기본 박스
+    </div>
+     <div id="box1">
+        박스1
+     </div>
+     <div id="box2">
+        박스2
+     </div>
+     <div id="box3">
+        박스3
+     </div>
+
+
+
+</body>
+</html>

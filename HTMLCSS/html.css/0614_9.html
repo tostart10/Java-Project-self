@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>연습문제</title>
+</head>
+<body>
+    <form name="form1"  action="0614.html" method="get">
+        <table align="center" bordercolor="#CCDDFF" border="1" cellspacing="0">
+        <tr>
+            <th colspan="2" bgcolor="#CCDDFF">회원 기본 정보</th>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">아이디:</th>
+            <td>
+                <input type="text" name="my_id" value="" maxlength="12" size="15">4~12자의 영문 대소문자와 숫자로만 입력
+            </td>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">비밀번호:</th>
+            <td>
+                <input type="password" name="my_password" value="" maxlength="12" size="15">4~12자의 영문 대소문자와 숫자로만 입력
+            </td>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">비밀번호확인:</th>
+            <td>
+                <input type="password" name="my_password_confirm" value="" maxlength="12" size="15">
+            </td>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">메일주소:</th>
+            <td>
+                <input type="text" name="my_mail" value="" size="20"> 예)id@domain.com
+            </td>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">이름:</th>
+            <td>
+                <input type="text" name="my_name" value="" size="20">
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" bgcolor="#CCDDFF">개인 신상 정보</th>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">주민등록번호:</th>
+            <td>
+                <input type="text" name="my_address" value="" maxlength="13" size="20"> 예)1234561234567
+            </td>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">생일:</th>
+            <td>
+                <input type="text" name="my_year" value="" maxlength="4" size="4">년
+                <select name="my_month">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>월
+                <select name="my_day">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>일
+            </td>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">관심분야:</th>
+            <td>
+                <input type="checkbox" name="my_hobby" value="computer">컴퓨터
+                <input type="checkbox" name="my_hobby" value="internet">인터넷
+                <input type="checkbox" name="my_hobby" value="trip">여행
+                <input type="checkbox" name="my_hobby" value="movie">영화감상
+                <input type="checkbox" name="my_hobby" value="music">음악감상
+            </td>
+        </tr>
+        <tr>
+            <th bgcolor="#EEEEEE">자기소개:</th>
+            <td>
+                <textarea name="my_intro" cols="50" rows="5" style="resize:none;">
+                </textarea>
+            </td>
+        </tr>
+        </table>
+        <br />
+        <div align="center">
+            <input type="submit" value="회원가입">
+            <input type="reset" value="다시 입력">
+        </div>
+    </form>
+</body>
+</html>

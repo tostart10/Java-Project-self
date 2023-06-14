@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>클래스 선택자</title>
+    <style>
+        .red{
+            color: red;
+        }
+
+        .select{
+            color: pink;
+            font-size: 30px;
+        }
+
+        .item{color: red;}
+        .header{background-color: blue; color: orange;}
+
+
+        li.select2{
+            color: aqua;
+        }
+
+        input[type="text"]{
+            background: orange;
+        }
+
+        h3, #link{
+            color: purple;
+        }
+
+        a:link{
+            color: red;
+        }
+
+        a:visited{
+            color: blue;
+        }
+
+        a:hover{
+            color: green;
+        }
+
+        a:active{
+            color: orange;
+        }
+
+    </style>
+</head>
+<body>
+<!--스타일링 링크 꾸미기 시작-->
+    <p>
+        <a href="https://www.jejusi.go.kr">링크 상태 모두 체크</a>
+    </p>
+    <!--스타일링 링크 꾸미기 끝-->
+
+    <div class="red">red</div>
+    <p class="red intro">Hello world</p>
+    <br><br>
+    
+    <ul>
+        <li class="select">사과</li>
+        <li>바나나</li>
+        <li class="select">오렌지</li>
+        <li>키위</li>
+    </ul>
+    <p><h1 class="item header">즐거운 오후입니다.</h1></p>
+    
+    <!--태그 하위 클래스 선택-->
+    <ul>
+        <li class="select2">사과</li>
+        <li>바나나</li>
+        <li>오렌지</li>
+        <li>키위</li>
+    </ul>
+    <h2 class="select2">나는 하위가 아니다</h2>
+    <br>
+    <input type="text" name="name1" size="20">
+    <input type="password" name="name2" size="20">
+    <br><br>
+
+    <h3>하나의 css를 여러개의 선택자에 적용</h3>
+    <a id="lint" href="http://www.daum.net">잘 되나...</a>
+
+
+
+
+</body>
+</html>

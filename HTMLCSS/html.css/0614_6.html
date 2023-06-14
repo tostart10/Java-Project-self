@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>박스에 그림자 효과</title>
+    <style>
+        
+        body{font-weight: bold; font-size: 12pt;}
+        .boxshadow1{
+            background-color: yellow;
+            border: 5px solid blue;
+            box-shadow: 10px 10px 0px teal;
+        }
+
+        .boxshadow2{
+            background-color: orange;
+            border: 5px solid red;
+            box-shadow: 20px 20px 50px red;
+        }
+        .boxshadow3{
+            background-color: silver;
+            border: 5px solid black;
+            box-shadow: 20px 20px 30px -20px maroon;
+        }
+
+        .boxshadow4{
+            background-color: lime;
+            border: 5px solid olive;
+            box-shadow: 10px 10px 0px 10px fuchsia inset;
+        }
+
+        .shadow1{box-shadow: 5px 5px 10px black;}
+        .shadow2{box-shadow: 5px -5px 10px black;}
+
+        div{width: 200px; height: 50px; padding: 10px; margin: 30px;}
+
+        #bs1{
+            border: 1px solid rgba(102, 186, 156, 0.4);
+            box-shadow: 0px 0px 20px 10px rgba(102, 186, 156, 0.4);
+        }
+
+        #bs2{
+            border: 1px solid black;
+            box-shadow: 10px 10px #BCE55c, 20px 20px #CEF279, 30px 30px #E4F7BA;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--
+    <h1 class="boxshadow1">박스 그림자 스타일링 예제1</h1>
+    <h1 class="boxshadow2">박스 그림자 스타일링 예제2</h1>
+    <h1 class="boxshadow3">박스 그림자 스타일링 예제3</h1>
+    <h1 class="boxshadow4">박스 그림자 스타일링 예제4</h1>
+-->
+    <img src="./img/flower.jpeg" class="shadow1">
+    <img src="./img/flower.jpeg" class="shadow2">
+    <br><br>
+    <div id="bs1">
+        <h3>박스 그림자 특수 효과1</h3>
+    </div>
+    <div id="bs2">
+        <h3>박스 그림자 특수 효과2</h3>
+    </div>
+
+    
+</body>
+</html>

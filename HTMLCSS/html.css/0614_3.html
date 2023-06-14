@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <!--optgroup label은 타이틀 역할
+    <h3>전공 분야를 선택하세요.</h3>
+    <form name="form1" method="get" action="0614.html">
+    <label for="">그룹별 선택항목을 제공.
+        <select name="major" >
+            <optgroup label="computer">
+                <option value="software">software</option> 
+                <option value="robot">robot</option>  
+                <option value="system">system</option>  
+            </optgroup>
+            <optgroup label="language">
+                <option value="korea" selected>korea</option>
+                <option value="china">china</option>
+                <option value="english">english</option>
+                <option value="germany">germany</option>
+            </optgroup>
+            <optgroup label="business">
+                <option value="service" selected>service</option>
+                <option value="education">education</option>
+                <option value="Communication">Communication</option>
+                <option value="marketing">marketing</option>
+            </optgroup>
+        </select>
+        <br>
+        <input type="submit" value="선택">
+        <input type="reset" value="다시선택">
+    </label>
+</form>
+    -->
+    <h3>선택사항을 직접 입력하세요.</h3>
+    <form method="get" name="form1" action="0614.html">
+        <label >전공 분야를 입력하세요.
+            <input type="text" name="major" list="majorlist">
+            <datalist id="majorlist">
+                <option value="Software">소프트웨어</option>
+                <option value="Robot">로봇</option>
+                <option value="System">시스템</option>
+                <option value="Service">서비스</option>
+                <option value="Education">교육</option>
+            </datalist>
+            <br>
+            <input type="submit" value="완료">
+            <input type="reset" value="다시작성">
+
+        </label>
+
+    </form>
+
+
+</body>
+</html>
