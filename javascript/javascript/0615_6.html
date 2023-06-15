@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>날짜</title>
+</head>
+<body>
+    <h1>날짜를 문자열이나 숫자로 변환</h1>
+    <p id="result"></p>
+    <script>
+        var result = String(Date());
+        document.getElementById("result").innerHTML = result + "<br>";
+        result = Date().toString();
+        document.getElementById("result").innerHTML += result + "<br>";
+        var date = new Date();
+        result = date.getFullYear();
+        document.getElementById("result").innerHTML += result + "<br>";
+        result = date.getTime();
+        document.getElementById("result").innerHTML += result + "<br>";
+        result = date.getHours();
+        document.getElementById("result").innerHTML += result + "<br>";
+        result = date.getMinutes();
+        document.getElementById("result").innerHTML += result + "<br>";
+
+    </script>
+
+    <!--연산자-->
+    <script>
+        var x = 3, y=5;
+        var a= "abc", b= "bcd";
+        document.write((x > y) + "<br>");   //false
+        document.write((a <= b) + "<br>");  //알파벳 순서상 a보다 b가 큼(true)
+        document.write((x < a) + "<br>");   //숫자와 문자열 비교는 불가(false)
+
+        var x =3, y ='3', z=3;
+        document.write(( x == y) + "<br>"); //==은 값만 비교 -> 값이 같으므로 (true)
+        //내부적으로 x나 y중 하나가 형변환 된거임
+
+        document.write((x === y) + "<br>"); //값은 같으나 타입이 다르므로 false
+        document.write((x === z) + "<br>"); //값과 타입이 같으므로 true
+
+    </script>
+
+</body>
+</html>

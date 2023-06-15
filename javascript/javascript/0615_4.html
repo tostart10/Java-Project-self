@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>typeof 연산자로 데이터 타입 확인</title>
+</head>
+<body>
+    <script>
+        var num;     //초기 값이 없음
+        var obj = null; //객체 변수 값이 없음
+
+        document.write(typeof 100+ "<br />");
+        document.write(typeof 10.5+ "<br />");
+        document.write("홍길동"+ "<br />");
+        document.write(typeof true+ "<br />");
+        document.write(typeof [1,2,3] + "<br />");
+        document.write(typeof num + "<br />");
+        document.write(typeof obj + "<br />");
+
+    </script>
+
+    <h1>문자열 타입</h1>
+    <p id="str"></p>
+
+    <script>
+        var firstStr = "이것은 문자열입니다.";
+        var secondStr = "이것도 문자열입니다.";
+        var thirdStr = "나의 이름은 '홍길동'입니다.";
+        var fourthStr = '나의 이름은 "홍길동"입니다.';
+
+        document.getElementById("str").innerHTML = firstStr + "<br />" + 
+        secondStr + "<br />" + thirdStr + "<br />" + fourthStr + "<br />" ;
+    </script>
+
+    <br>
+    <h1>boolean 타입</h1>
+    <p id="result"></p>
+    <script>
+        var firstNum = 10;
+        var secondNum = 11;
+
+        document.getElementById("result").innerHTML = (firstNum == secondNum);
+    </script>
+    <br>
+    <h1>null과 undefined</h1>
+    <p id="result2"></p>
+    <script>
+        var num;        // 초기화하지 않았으므로 undefined 값을 반환함
+        var str = null; //object타입의 null값
+        
+        //정의되지 않은 변수에 접근하면 undefined 값을 반환함
+        document.getElementById("result2").innerHTML = (typeof num) + "<br>" + (typeof str) +
+         "<br>" + (typeof secondNum2);
+    </script>
+    <br>
+
+    <h1>객체타입</h1>
+    <p id="result3"></p> <!--내용을 넣을 위치만 잡아놓은 상태-->
+    <script>
+        var dog = {name:"해피", age:3}; //객체 생성
+        
+        //객체 프로퍼티 참고
+        document.getElementById("result3").innerHTML = 
+        "강아지 이름은 " + dog.name + "이고, 나이는 " + dog.age+ "살 입니다."; //id가 result인 태그 안(innerHTML)에 = 이 값을 넣어주겠다.
+
+    </script>
+    <br>
+
+
+</body>
+</html>

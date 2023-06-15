@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트</title>
+    <script>
+        function over(obj){
+            obj.src = "./img/computer2.jpeg";
+        }
+        function out(obj){
+            obj.src = "./img/computer1.jpeg";
+        }
+
+    </script>
+</head>
+<body>
+    <h1>delete 연산자</h1>
+    <script>
+        var arr = [1,2,3];
+        document.write("삭제 전 : " + arr + "<br>");
+        delete arr[2];
+        document.write("삭제 후 : " + arr + "<br>"); //값만 지워진 것이지 자리는 있기 때문에 컴마도 출력됨
+        document.write("arr[2] : " + arr[2] + "<br>");
+        document.write("arr.length : " +arr.length + "<br>");
+    </script>
+    <br>
+    <h2><a href="javascript:void(0)">링크는 동작하지 않습니다.</a></h2>
+    <h3><a href="javascript:void(document.body.style.backgroundColor='yellow')">링크는 동작하지 않지만 HTML문서 배경은 변경됨.</a></h3>
+    <br><br>
+
+    <!--이벤트 리스너 속성-->
+    <h3>이미지 위에 마우스를 올려 보세요</h3>
+    <img src="./img/computer1.jpeg" alt="컴퓨터1" onmouseover="this.src='./img/computer2.jpeg'"  onmouseout="this.src='./img/computer1.jpeg' ">
+    <!--alt속성은 이미지가 없을떄 대신 나타내는 문자-->
+    <br><br>
+    <h3>이미지 위에 마우스를 올려 보세요 (2)</h3>
+    <img src="./img/computer1.jpeg" alt="컴퓨터2" onmouseover="over(this)"  onmouseout="out(this)">
+
+
+
+
+</body>
+</html>

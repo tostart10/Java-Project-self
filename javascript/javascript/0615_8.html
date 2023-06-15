@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트</title>
+</head>
+<body>
+    <h2>제어문 if~else 문</h2>
+    <p id="result"></p>
+ 
+    <script>
+        var age = 19;
+
+        if(age > 19){
+            result = "성인입니다.";
+        }
+        else{
+            result = "미성년자 입니다."
+        }
+
+        document.getElementById("result").innerHTML = result;
+    </script>
+
+
+    <!--정수를 입력 받아서 10보다 크거나 같은지와 작은지 체크
+    입력예)
+    정수를 입력하세요.>
+    10
+    출력예)
+    입력받은 값은 10이며, 10보다 크거나 같습니다.
+    단, 작은 경우 '입력받은 값은 00이며, 10보다 작습니다.' 
+    -->
+    <script>
+        var chk =10;  //prompt("정수를 입력하세요.");
+        var num = parseInt(chk); //문자를 정수로 바꿈
+        //형변환 안해도 상관없지만 parseInt()로  chk 값을 정수로 형변환 해준것임
+
+        //어떤 데이터 타입인지 알아보기 위한 코드
+        // document.write(typeof chk + "<br>"); //String
+        // document.write(typeof num + "<br>"); //number
+
+        if(num >= 10){
+
+            document.write("입력받은 값은 "+ num + "이며, 10보다 크거나 같습니다");
+        }
+
+        else{
+            document.write("입력받은 값은 "+ num + "이며, 10보다 작습니다.")
+        }
+
+        
+        //방법2
+        if(num >= 10){
+
+            result = "입력받은 값은 " + num +  "이며, 10보다 크거나 같습니다"
+            
+            }
+
+        else{
+            result = "입력받은 값은 " + num +  "이며, 10보다 크거나 같습니다"
+        }
+
+        document.write(result);
+        document.getElementById("result").innerHTML += "<br>" + result;
+    </script>
+    <script>
+        /*문제)현재 시간을 얻어 12시 이전이면 "Good morning", 오후 6시 이전이면, "good afternoon", 오후6시 이후는 "good evening"라고 alert 메세지를 출력하세요
+        단, 현재 시간은 var time = new Date().getHours();
+        */
+    
+        var time = new Date().getHours();
+        
+        
+        if(time < 6){
+            result = "Good morning";
+
+        }
+        if(time >6 || time <18){
+            result ="good afternoon";
+        }
+        if(time >= 18){
+            result =  "good evening";
+        }
+
+        document.write(alert(result));
+    </script>
+        
+        <!--모범코드-->
+    <script>
+        var time = new Date().getHours();
+        var mgs;
+        if(time <12){
+            msg ="Good morning";
+        }
+        else if(time<18){
+            msg ="good afternoon";
+        }
+        else{
+            msg = "good evening";
+        }
+
+        //alert(msg);
+    </script>
+    <script>
+        /*문제)입력 성별을 받고(남자(M), 여자(F)) 그리고 나이를 입력받아
+        각 19세 이상은 '남자성인입니다.' 또는 '여자 성인입니다'
+        19세 이하는 '남자 미성년자입니다.' 또는 '여자 미성년자입니다.'라고
+        최종 출력은 document.write로 출력 (document.write("당신은 " + result + "<br>"));
+        단, 변수는 성별은 gender, 나이는 age
+        */
+        var gender = prompt("성별을 입력하세요.").trim(); //trim으로 앞뒤공백 제거
+        var age = parseInt(prompt("나이를 입력하세요."));
+
+
+        if(gender == "M"){
+            if(age>=19){
+                result = "남자 성인입니다";
+            }
+            else{
+                result = "남자 미성년자 입니다";
+            }
+        }
+        else{
+            if(age>=19){
+                result = "여자 성인입니다";
+            }
+            else{
+                result = "여자 미성년자 입니다";
+            }
+        }
+        document.write(("당신은 " + result + "<br>"));
+    </script>
+
+</body>
+</html>
