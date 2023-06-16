@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>학점 환산 프로그램</title>
+</head>
+<body>
+    <script>
+        var point = 80;  //과목점수
+        var grade = "";
+
+
+        if(point < 0 || point >100){
+            document.write("0~100점 사이 값을 입력하세요." + "<br>");
+        }
+        else{
+            if(point >= 90){
+
+            grade = "A";
+            document.write("아주 잘했습니다." + "<br />");
+            }
+            else if(point >=80){
+
+            grade = "B";
+            document.write("잘했습니다." + "<br />");
+            }
+            else if(point >= 70){
+
+            grade = "C";
+            document.write("조금만 노력하면 잘할 수 있습니다.<br />");
+            }
+            else if(point >= 60){
+
+            grade = "D";
+            document.write("좀 더 노력하세요. <br />");
+
+            }
+            else{
+            grade = "F";
+            document.write("많이 노력하기 바랍니다. <br>");
+            }
+
+            document.write("당신의 학점은 <b>" + grade + "</b>입니다.");
+
+        }
+
+
+    </script>
+    
+</body>
+</html>

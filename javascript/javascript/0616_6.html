@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>숫자 맞추기 게임</title>
+    <script>
+        //변수 선언하는 방법 3가지
+        //let, const
+        //let은 지역변수, 전역변수처럼 선언한 곳에서만 사용가능?, 재선언할 수 없음??
+        //const는 상수
+
+        var computerNumber = 53;
+
+        var nGuesses = 0;
+        
+
+        function guess(){
+
+
+            var result = "";
+            var number = parseInt(document.getElementById("user").value)
+            nGuesses++;
+
+            if(number == computerNumber){
+                result = "성공입니다";
+            }
+            else if(number < computerNumber){
+                result = "낮습니다.";
+            }
+            else{
+                result = "높습니다.";
+            }
+           
+            document.getElementById("result").value = result;  //id가 result인 것의 value 값으로 변수값을 대입
+           document.getElementById("guesses").value = nGuesses;
+        }
+
+
+    </script>
+</head>
+<body>
+    <form name="form1" method="get">
+    <h1>숫자 맞추기 게임</h1>
+    <p>이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임입니다. 숫자는 1부터 100사이에 있습니다</p>
+    숫자 : <input type="text" id="user" size="5">
+    <input type="button" value="확인"  onclick="guess();">
+    <br>
+    추측횟수 : <input type="text" id="guesses" size="5">
+    힌트 : <input type="text" id="result" size="16">
+    
+</form>
+    
+</body>
+</html>

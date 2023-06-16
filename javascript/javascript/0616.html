@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트-제어문</title>
+    <!--홀짝 게임 id가 num1인것으로 가져오는 방법과 name이 name1인것으로 가져오는 방법 2가지 함-->
+    <script>
+        function cal(){
+            var number1 = document.form1.num1.value; //name으로 이용 (body에 있는 name을 이용해 가져오기)
+            alert("num1 : " + number1);
+
+            // var number1 = document.getElementById("num1").value;  //id로 이용 (id이용해서 가져오기)
+            // alert("num1 : " + number1);
+
+            if(document.form1.num1.value==""){
+                alert("값을 입력하세요.");
+                document.form1.num1.focus(); //이 위치로 focus가 간다
+                return;
+            }
+
+            //숫자만 입력했는지 알아보기
+            if(isNaN(number1)){ // isNaN(매개변수):매개변수로 들어온 값이 수치로 변경가능 하냐, ture면 수치로 변경안되는 것
+                alert("숫자만 입력 가능합니다. 다시 입력하세요."); //코드 순서 지켜야합 -> 값이 입력이 되야 숫자인지 문자인지 구분함
+                document.form1.num1.value = "";
+                document.form1.num1.focus(); 
+                return;
+            }
+
+            //바꿔서 처리하도록함
+            number1 =parseInt(number1);
+
+            if(number1 % 2 ==0){
+                alert("짝수입니다.");
+            }
+            else{
+                alert("홀수입니다.");
+            }
+
+            //회원가입할레? 했을때 취소하면 없어지는 거
+            //alert은 확인 버튼만 있음
+            //confirm은 확인 취소 버튼이 있음 -> 확인 버튼누르면 실행, 취소버튼누르면 false로 실행안함
+            //메세지 창으로는 안뜨고
+            if(confirm("서버로 보내시겠습니까?")){
+                //확인버튼눌렀을떄
+                document.form1.submit();
+
+            }
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+    <!--
+    <script>
+        /*prompt()함수를 이용하여 점수를 입력받고 if~else 를 사용하여 A~F까지 학점을 출력하는 스크립트 코드 작성
+        pronpt("점수를 입력하세요.");  //90
+        최종출력 : 90점은 A입니다.
+        단, 90~100:A, 80~89 : B, 70~79 : C, 60~69 : D, 나머지 F
+        document.write()는 한번만 실행.
+        */
+
+        var num =prompt();
+        num = parseInt(num);
+
+        if(num >= 90){
+            score = "A";
+        }
+        else if(num >=80){
+            score = "B";
+        }
+        else if(num >=70){
+            score = "C";
+        }
+        else if(num >=60){
+            score = "D";
+        }
+        else{
+            score = "F";
+        }
+
+        document.write(num + "점은 " + score + "입니다.");
+    </script>
+-->
+        <!--짝/홀수 맞추기  게임-->
+        <h1>짝홀수 맞추기 게임</h1>
+        값을 입력하세요
+        <form name="form1" action="0615.html" method="get">
+            숫자 : <input type="text" id="num1" name="name1" size="5">
+            &nbsp;
+            <input type="button" name="result" onclick="cal()" value="계산하기">
+
+
+        </form>
+
+        
+
+</body>
+</html>

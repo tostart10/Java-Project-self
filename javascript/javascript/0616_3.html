@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>학점 매기기 게임</title>
+    <script>
+        function sub(){
+            if(document.form1.grade.value == ""){
+                alert("학점에 대한 채점을 먼저 하세요.");
+                return;
+            }
+            if(confirm("서버로 보내시겠습니까?")){
+                document.form1.submit();
+
+            }
+        }
+
+        function gradeGame(){
+            var score = document.form1.score.value;
+
+            if(document.form1.score.value == ""){
+                alert("점수를 입력하세요.");
+                document.form1.score.focus(); //document.form1.score로 포커스를 옮겨주기
+                return;
+            }
+
+            if(isNaN(score)){  //isNaN(document.form1.score.value) 이렇게 와도 됨
+                alert("점수는 숫자로만 입력하세요.");
+                document.form1.score.value = "";
+                document.form1.score.focus();
+                return;
+            }
+
+            score = parseInt(score);
+
+            if(score >=90){
+                document.form1.grade.value = "A";
+            }
+            else if(score >=80){
+                document.form1.grade.value = "B";
+            }
+            else if(score >=70){
+                document.form1.grade.value = "C";
+            }
+            else{
+                document.form1.grade.value = "F";
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <h1>학점 매기기 게임</h1>
+    점수를 입력하세요.
+    <form name="form1" action="0616.html" method="get">
+        점수 : <input type="text" id="score" name="score" size="5">
+        <br>
+        학점 : <input type="text" id="grade" name="grade" size="5">
+        &nbsp;
+        <input type="button" name="result" onclick="gradeGame()" value="채점">
+        <input type="button" name="result2" onclick="sub()" value="확인">
+               
+
+
+    </form>
+    
+</body>
+</html>

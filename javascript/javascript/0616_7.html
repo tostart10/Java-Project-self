@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>반복문</title>
+    <script>
+        function gugu(){
+
+            var a =parseInt(document.getElementById("num1").value);
+            var b =parseInt(document.getElementById("num2").value);
+
+            for(i=a; i<=b; i++){
+
+                document.getElementById("tab").innerHTML += "<br /> " + i + "단 <br>";
+
+                for(j=1; j<=9; j++){    
+                    document.getElementById("tab").innerHTML += i +" * " + j + " = " +( i * j) +"<br />";
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <script>
+        var i =0;
+        for(i=0; i<10; i++){
+            document.write("카운트 " + i + "<br>");
+        }
+
+    </script>
+    <br><br>
+    <h2>for문으로 10px~35px 크기 출력</h2>
+    <hr>
+    <script>
+        var i;
+
+        for(i=10; i<=35; i +=5){
+            //<span sytle='font-size:10px'>10px</span> 자바스크립트 문법이  write()안에 쓰여있는 것일뿐임
+            document.write("<span ");
+            document.write("style='font-size:" + i + "px'>");
+            document.write(i + "px");
+            document.write("</span>");
+        }
+
+    </script>
+    <br><br>
+    <h2>구구단 표</h2>
+    <table border="2" width="50%">
+        <script>
+            var i, j;
+            for(i=1; i<= 9; i++){
+                document.write("<tr>"); //행이 하나 생김
+
+                for(j=1; j<=9; j++){ // 행 하나에 열이 9개 생김
+                    document.write("<td>" +(i*j) + "</ td>");
+
+                }
+                document.write("</ tr>"); //thml 문법으로 <tr></ tr> 꼭 태그를 닫아줘야한다
+            }
+        </script>
+
+    </table>
+    <br><br>
+    <script>
+        /*문제)구구단을 작은수와 큰 수 순서로 입력 받아 구구단 출력하는 프로그램
+        입력예)시작단을 입력하세요.  2
+                끝단을 입력하세요.  3
+            단, 입력받은 값은 숫자로 변환 parseInt()
+        출력예)2단
+            2 * 1 = 2
+            2 * 2 = 4
+            ...
+            2 * 9 = 18
+
+            3단
+            3 * 1 = 3
+            ...
+            3 * 9 = 27
+        */
+
+        var strNUm = parseInt(prompt("시작단을 입력하세요."));
+        var endNum = parseInt(prompt("끝단을 입력하세요."));
+
+        var i, j;
+        for(i=strNUm; i<=endNum; i++){
+
+            document.write(i+"단 <br />");
+
+            for(j=1; j<=9; j++){    
+                document.write( i +" * " + j + " = " + i * j +"<br />");
+            }
+            document.write("<br />");
+        }
+
+        //선생님코드
+        for(i=strNUm; i<=endNum; i++){
+
+        document.write("<br />" +i+"단<br />");
+
+        for(j=1; j<=9; j++){    
+            document.write( i +" * " + j + " = " + i * j +"<br />");
+        }
+        
+        }
+         </script>
+
+
+    
+    시작단 : <input type="text" id="num1" name="num1" size="5"><br>
+    끝 단 : <input type="text" id="num2" name="num2" size="5">&nbsp;
+    <input type="button" value="구구단" onclick="gugu()">
+    <br>
+    <p id="tab"></p>
+   
+
+    
+</body>
+</html>
