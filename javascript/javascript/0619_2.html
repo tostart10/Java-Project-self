@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트</title>
+</head>
+<body>
+    <h1>continue문(5,7의 배수 인경우만 출력)</h1>
+    <script>
+        var i;
+
+        for(i=0; i<=100; i++){
+
+            if(i % 5 !=0 && i%7 !=0){
+                continue;
+            }
+            document.write(i + " ");
+        }
+    </script>
+    <script>
+        document.write("<br><br>");
+        /*문제)break문제
+        break를 이용하여 1에서 얼마까지 더해야 3000을 넘을 수 있는지 구하시오
+        출력예)77까지 더하면 3000을 넘음 : 3003
+        */
+        var sum=0; //sum을 0으로 초기화 시키지 않으면 오류여서 프로그램이 실행안됨
+        var i;
+
+
+        for(i=0;  ; i++){
+
+            sum += i;
+            
+            if(sum >3000){
+                document.write(i + "까지 더하면 3000을 넘음 : "+ sum);
+                break;
+            }
+        }
+        document.write("<br>");
+
+        //모범코드
+        sum=0; i=1;
+
+        for(i=1 ;  ; i++){
+            if(sum > 3000){
+                break;
+            }
+        }
+        document.write(i + "까지 더하면 3000을 넘음 : "+ sum);
+
+
+        //위의 for문을 주석처리 안하면 sum과 i를 초기화 꼭 해줘야지만 프로그램 실행됨
+        sum=0;
+        i=1;
+        while(true){
+            
+            sum += i;
+            
+            if(sum >3000){
+                document.write(i + "까지 더하면 3000을 넘음 : "+ sum);
+                break;
+            }
+
+            i++;
+        }
+        
+    </script>
+    
+</body>
+</html>

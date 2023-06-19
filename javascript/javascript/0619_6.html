@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트(함수)</title>
+</head>
+ <script>
+    function add(){
+        alret("1");//디버깅용
+        var sum = 1;
+        return sum;
+    }
+
+    function add(a){
+        alret("2");
+        var sum = a;
+        return sum;
+    }
+
+    function add(a,b){
+        alret("3");
+        var sum = a+b;
+        return sum;
+    }
+
+    function add(a, b, c){
+        //== 은 값만 같으면 됨, ===은 값과 데이터 타입 모두 같아야함
+        //undefined 자체가 값임
+
+         //값이 어디에 어떻게 들어가는지 확인하기 위한 코드 , 여기서 document.write쓰면 안됨-> 디버깅용이므로 결과창에 결과 출력되면 안됨
+         //alert또는 console.log를 사용
+         //예외처리를 하라는 뜻
+
+         //alert("a : " +a +"b" + b +"c" + c);
+         console.log(a +"<br>");
+         console.log(b+"<br>");
+         console.log(c+"<br>");
+
+        //  if(b === undefined && c === undefined){  //만약 여기에 b== undefined라고 해버리면 함수 호출할때 add(1, "undifined")로 넘겨버리면 undefined로 값이 같아져 버리므로 true 로 되서 결과 같이 달라진다
+        //     sum = a;
+        //  }
+        //  else if(c === undefined){
+        //     sum = a+b;
+        //  }
+        //  else{
+        //     sum = a+b+c;
+        //  }
+       
+        return sum; //a+b+c
+    }
+
+    function add(a,b){
+        alert("5");
+        var sum =a + b;
+        return sum;
+    }  //마지막에 쓰여진 이 함수가 호출된다  => 자바스크립트는 제일 마지막에 쓰여진게 적용됨
+    //매개변수 상관없이 함수 이름만 보고 간다
+    //매개변수 개수 상관없이 그냥 무조건 함수이름만 보고  맨 마지막에 쓰여진 함수를 호출한다
+
+
+
+ </script>
+<body>
+    <h2>인자의 개수가 적을 때 처리방법</h2>
+    <script>
+        var r =add();
+        var r1 =add(2);       //a만 갔을 때 a+b+c라면 b와 c는 undefined여서 숫자로 바꿀수 없으므로 NaN이다.
+        var r2 =add(2, 3);
+        var r3 =add(4, 5, 6);
+
+        document.write("함수 인수부족 r1 : " + r1 + "<br />");
+        document.write("함수 인수부족 r2 : " + r2 + "<br />");
+        document.write("정상적인 함수 호출 : " + r3 + "<br />");
+    </script>
+    
+</body>
+</html>

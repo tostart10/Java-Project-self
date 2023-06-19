@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트(label문)</title>
+</head>
+<body>
+    <h1>label문</h1>
+    <script>
+        var i, j;
+
+        gugudan: //label은 세미콜론이 아닌 콜론!!!!
+        for(i=1; i<=9; i++){
+            
+            document.write(i + "단<br>"); //더 확실하게 확인해보기 위해 출력
+            dan:  //label
+            for(j=1 ; j<=9 ; j++){
+
+                if(i ==9){
+                    break gugudan;//break dan; 
+                    //break는 나를 감싸고 있는 첫번째for문 만 빠져나가야 되는 데 label을 쓰면 for문들을 완전히
+                    //빠져나가게 되서 9단을 출력하고  ttttttt가 출력되지 않는다
+                    //지금 break의 라벨의 위치는 바깥쪽 for문이여서 결과적으로 for문을 완전히 빠져나가게 된다
+                }
+
+                if((i*j) % 2 ==0){
+                    continue gugudan; //continue dan; dan으로 한거는 for문의 증감식으로 가기 때문에 라벨없을 때와 똑같은 코드가 된다(즉 continue dan;은 의미 없는것)
+                    //continue는 for문일 경우 for문을 완전히 빠져나가는 것이 아니라 증감식으로 가서 실행한다.
+                    //break는 for문을 완전히 빠져나가서 더이상 for문을 실행하지 않음
+                }
+                document.write(i + " * "+ j + "=" + (i*j)+ "<br>");
+            }
+            document.write("tttttt");
+        }
+        document.write("for gugudan 끝 : i = " + i + ", j = " + j + "<br>");
+        
+    </script>
+    <script>
+        //while, do~while
+        //1부터 100까지 합을 구하기.(단, 무한루프 아니게 적용)
+        //1) 무한루프 없이 조건식
+        //2) 무한루프 적용
+        //3) do-while 조건식 적용
+
+        var i=0 , sum=0;  //let로 변수 선언하면 재정의 안됨!
+
+        while(i<=100){
+            sum += i;
+            i++; //이걸 안해주면 i가 영원히 0임
+        }
+        document.write("1~100까지 합 : " + sum +"<br>");
+
+
+        var i=0, sum=0;
+        while(1){ //자바스크립트에서는 while의 조건을 1로 해도 무한루프된다. 단, 자바에서는 ture만 무한루프가능
+            if(i>100){
+                break;
+            }
+            sum += i;
+            i++; //이걸 안해주면 i가 영원히 0임
+            //만약 i가 몇까지 도는지를 찍고 싶다면 i++;을 반드시 break문 밑에 써줘야한다.
+        }
+        document.write("1~100까지 합 : " + sum +"<br>");
+
+
+        var i=0, sum=0;
+        do{
+            sum += i;
+            i++;   //이걸 안해주면 i가 영원히 0임
+        } while(i<=100);
+        document.write("1~100까지 합 : " +sum +"<br>");
+
+
+
+    </script>
+</body>
+</html>
