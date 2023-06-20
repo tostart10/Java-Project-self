@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>변수(전역, 지역)</title>
+</head>
+<body>
+    <h3>전역변수</h3>
+    <script>
+        var num = 10;
+        function globalNum(){
+            document.write("함수 내부 num값은 " + num + "입니다. <br>");
+            num = 20;
+        }
+
+        globalNum();
+        document.write("함수 끝나고 num값은 " + num + "입니다. <br>");
+        globalNum();
+    </script>
+    <br><br>
+    <h3>함수내부에서 선언없이 사용된 변수</h3>
+    <script>
+        function globalNum2(){
+            num2 = 30;
+            document.write("함수 내부에서 num2값" + num2 + "입니다.<br>");
+        }
+
+        document.write("함수 호출 전 num2값" + (typeof num2) + "입니다.<br>");
+        //아직 함수가 호출되지 않아서 변수가 생성되지 않음
+
+        globalNum2();
+        document.write("함수 밖 num2 값 " + num2 + "입니다<br>");
+        //함수 내에서 변수 선언시 var로 선언하지 않아서 전역변수오 선언됨
+    </script>
+    
+    <br><br>
+    <!--전역변수도 윈도우 객체로 할 수 있다 documnt는 생략 불가하지만 window.alert()처럼 window 객체는 생략가능함-->
+    <h3>전역변수 window객체</h3>
+    <script>
+        var num3 =10; //전역변수
+        function globalNum3(){
+            var num3 = 30;//함수내 지역변수
+            document.write("함수내 num3값" + num3 + "입니다.<br>");
+            document.write("함수내 window.num3 값" + window.num3 + "입니다.<br>");   
+        }
+
+        globalNum3();
+        document.write("함수밖 num3 값" + num3 + "입니다.<br>");
+    </script>
+    <br><br>
+    <h3>매개변수</h3>
+    <script>
+        function addNum(x, y,z){
+            //매개변수 값이 안넘어 올 겨우 연산오류로 NaN이 발생
+            //연산오류시 NaN이 발생하는걸 예방
+            if( x === undefined){
+                x = 0;
+            }
+            if(y === undefined){
+                y=0;
+            }
+            if(z === undefined){
+                z =0;
+            }
+
+            return x + y +z;
+        }
+        document.write("addNum(1, 2, 3) : " + addNum(1,2,3) + " <br />");
+        document.write("addNum(1, 2) : " + addNum(1,2) + " <br />");
+        document.write("addNum(1) : " + addNum(1) + " <br />");
+        document.write("addNum() : " + addNum() + " <br>");
+    </script>
+
+</body>
+</html>

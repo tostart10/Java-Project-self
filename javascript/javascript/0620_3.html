@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트/브라우저 창 열기</title>
+    <script>
+        var newWindowObj;
+        var strWindowF = "menubar =yes, resizeable=yes , scrollbars =yes, status=yes"; //window안에 들어가 있는 기본값들임
+        var chk=1;
+
+        function openWindow(){
+
+            chk++;
+            newWindowObj = window.open("http://www.daum.net", "daum", strWindowF);  //(주소, 이름, 옵션)
+            //옵션에menubar =yes, resizeable=yes , scrollbars =yes, status=yes 이거 그대로 써도 됨
+            //window.open->브라우저를 새로 오픈하는것(새로운 창)
+            //이 경우에는 이름이 그대로여서 새로운창 버튼은 계속 눌러도 브라우저 하나만 뜬다 -> 이름이 계속 daum으로 같기 때문에 같은 이름의 창 하나만 계속 열리는 것
+
+            //newWindowObj = window.open("http://www.daum.net", "daum"+chk , strWindowF);
+            //이렇게 하면 새창열기 버튼을 누를때마다 새로운 창을 계속 띄운다
+            //이름으로 간다는 것이 무슨말??  -> 지금 daum1, daum2는 각 브라우저의 이름이 달라지므로 각 이름에 따라 다른 브라우저가 열리는 것
+        }
+
+        
+        function closeNewWindow(){
+            newWindowObj.close();
+        }
+    </script>
+</head>
+<body>
+    <h1>브라우저 새창 열기/닫기</h1>
+    <input type="button" value="새창열기" onclick="openWindow()"&nbsp;>
+    <input type="button" value="새창닫기" onclick="closeNewWindow()">
+    <br><br>
+
+
+    <script>
+        var arr = [1, true, "javascript"];
+        document.write("arr.length : " + arr.length + "<br />");
+        arr.push("자바스크립트");
+        document.write("arr.length : " + arr.length + "<br />");
+        document.write("arr : " + arr + "<br>");
+        
+        arr.push(2, "안됨"); //2와 "안됨"이 맨뒤에 추가된다
+        document.write("arr.length : " + arr.length + "<br />");
+        document.write("arr : " + arr + "<br>");
+
+        //pop() 메서드
+        document.write("arr.pop() : " + arr.pop() + "<br>");  //arr.pop()는 리턴이 있다
+        document.write("arr.length : " + arr.length + "<br>");
+        document.write("arr.pop() : " + arr.pop() + "<br>");  
+        document.write("arr.length : " + arr.length + "<br>");
+        document.write("arr : " + arr + "<br>");
+
+        //shift() 메서드
+        document.write("arr.shift() : "+ arr.shift() + "<br>");
+        document.write("arr.length : " + arr.length + "<br>");
+        document.write("arr.shift() : "+ arr.shift() + "<br>");
+        document.write("arr.length : " + arr.length + "<br>");
+        document.write("arr : " + arr + "<br>");
+
+        //unshift() 메서드
+        arr = [1, true, "javascript"];
+        document.write("arr.length : " + arr.length + "<br />");
+        arr.unshift("자바스크립트");
+        document.write("arr.length : " + arr.length + "<br />");
+        document.write("arr : " + arr + "<br>");
+        arr.unshift(2, "되나");
+        document.write("arr.length : " + arr.length + "<br />");
+        document.write("arr : " + arr + "<br>");
+
+        //reverse() 메서드
+        document.write("<h1>reverse() 메서드</h1>")
+        arr= [1, true, "javascript", "자바스크립트"];
+        document.write("arr.reverse() : " + arr.reverse() + "<br>");
+
+        //sort() 메서드
+        document.write("<h3>reverse() 메서드</h3>")
+        var strArr= ["로마","나라", "감자", "다람쥐"];
+        var numArr = [10, 21, 1, 2, 3];
+        document.write("strArr.sort() : " + strArr.sort()+ "<br>");
+        document.write("numArr.sort() : " + numArr.sort() + "<br>");
+
+        //splice() 메서드
+        document.write("<h3>splice() 메서드</h3>")
+        arr = [1, true, "javascript", "자바스크립트"];
+        var removedElement = arr.splice(1, 2, false, "C언어");  //splice()로 지운 요소들이 removedElement변수에 들어간다.
+
+        document.write("arr : " + arr + "<br>");
+        document.write("removedElement : " + removedElement+ "<br>");
+
+
+    </script>
+</body>
+</html>

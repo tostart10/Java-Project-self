@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>자바스크립트</title>
+    <script>
+        function add(){
+            /*
+            createElement() : 요소(태그) 노드를 생성
+            createTextNode() : 텍스트 노드를 생성  /택스트노드 -> innerHTML처럼 안에 들어가는것
+            appendChild() : body 객체에 추가
+            */
+
+            var header = document.createElement('h3'); //h3 태그를 추가
+            var textNode = document.createTextNode('내 이름은 홍길동입니다.');
+            header.appendChild(textNode);  //<h3>내 이름은...입니다.</h3>
+            document.body.appendChild(header);
+        }
+
+        function add2(){
+
+            //객체변수 사용 : 객체변수.속성 = '값';
+            //변수를 이용하는 방법
+            // var img = document.createElement('img');
+            // img.src ="./img/computer1.jpeg";  //속성을 추가해줌
+            // img.width = 100;
+            // img.height=100;
+            // document.body.appendChild(img);
+
+             //속성메서드 사용 : setAttribute(속성, 값);
+             //메서드를 이용하는 방법
+            var img = document.createElement('img');
+            img.setAttribute("src","./img/computer1.jpg");   //속성을 추가해줌
+            img.setAttribute("width", 100);
+            img.setAttribute("height", 100);
+            document.body.appendChild(img);
+
+        }
+
+    </script>
+</head>
+<body>
+    <!--문서 객체 생성-->
+    <a href="#" onclick="add()">당신의 이름은 무엇입니까?</a>
+    <br><br>
+
+    <!--객체변수를 사용해 속성값 설정-->
+    <a href="#" onclick="add2()">[이미지추가]</a>
+    
+</body>
+</html>

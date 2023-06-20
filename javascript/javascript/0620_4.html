@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트- 배열객체 생성</title>
+</head>
+<body>
+    <script>
+        var city = new Array("Seoul", "Busan", "Incheon");
+
+        function printArr(){
+            if(city instanceof Array){
+                document.write("배열 객체가 생성되었습니다.<br>");
+                var i;
+
+                for(i=0; i<city.length ; i++){
+                    document.write("배열 데이터 [" + i + "] = " + city[i] + "<br>");
+                }
+            }
+            else{
+                document.write("배열 객체가 아닙니다. <br>");
+                document.write("데이터 : " + city + "<br>");
+            }
+        }
+        printArr();
+
+        document.write("<h3>city변수 타입 : " + typeof city + "</h3>");
+        document.write("<h3>배열객체확인 결과 : " + Array.isArray(city) + "</h3>");
+        //</h3>태그 안에 엔터가 들어가있어서 <br> 안해줘도 괜찮음
+        //태그를 안닫으면 짧은 코드일 떄는 오류가 안나지만 코드가 길어지면 나중에 충돌나서 오류남
+    </script>
+    
+</body>
+</html>
