@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트</title>
+    <script>
+        function styleChk(){
+            var selectedItem = document.getElementsByTagName("li");  //출력하면 object로 찍힌다
+
+            for( var i= 0; i < selectedItem.length; i++){
+                selectedItem.item(i).style.color = "orange";
+            }
+        }
+
+        function styleId(){
+
+            var selectedItem = document.getElementById("even");
+            selectedItem.style.color = "red";
+        }
+
+        function nameChk(){
+            var selectedItem = document.getElementsByName("first");
+
+            for(var i = 0; i < selectedItem.length; i++){
+                selectedItem.item(i).style.color = "blue";
+            }
+        }
+
+        function selectChk(){
+            var selectedItem = document.querySelectorAll("li.odd"); //li 태그에서 odd라고 되어 있는 것에 적용하겠다
+            for(var i=0; i < selectedItem.length; i++){
+                selectedItem.item(i).style.color = "brown";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--태그 이름을 이용한 텍스트 스타일 변경-->
+    <h3>모든 li 요소 선택</h3>
+    <ul>
+        <li>첫번째</li>
+        <li id="even">두번째</li>  <!--여기에 id 안넣어주면 안됨!!-->
+        <li>세번째</li>
+    </ul>
+    <br>
+    <ul>
+        <li name="first">첫번째</li>
+        <li>두번째</li>
+        <li>세번째</li>
+    </ul>
+    <br>
+    <ul>
+        <li>첫번째</li>
+        <li>두번째</li>  <!--여기에 id 안넣어주면 안됨!!-->
+        <li class="odd">세번째</li>
+        <li>첫번째2</li>
+        <li>두번째2</li>  <!--여기에 id 안넣어주면 안됨!!-->
+        <li class="odd">세번째2</li>
+    </ul>
+    <!--방법1 : HTML태그 이름을 이용한 선택-->
+    <input type="button" onclick="styleChk()" value="텍스트 색상 변경"> 
+    &nbsp;
+    <!--방법2 : 아아디(id)를 이용한 선택-->
+    <input type="button" onclick="styleId()" value="id텍스트 색상 변경">
+    <!--3. name으로 변경-->
+    &nbsp;
+    <input type="button" onclick="nameChk()" value="name으로 색상 변경">
+    &nbsp;
+    <!--4. selector로 선택, 변경-->
+    <input type="button" onclick="selectChk()" value="class으로 색상 변경">
+
+    <br>
+    <h3>screen 객체</h3>
+    <script>
+        document.write("현재 디스플레이 화면 너비 " + screen.width + "픽셀입니다.<br />");
+        document.write("현재 디스플레이 화면 높이 " + screen.height + "픽셀입니다.<br />");
+        document.write("현 브라우저 창 너비 " + window.outerWidth + "픽셀입니다.<br />");
+        document.write("현 브라우저 창 높이 "  + window.outerHeight + "픽셀입니다.<br />");
+    </script>
+    <br><br>
+    <script>
+        //1.현재 문서의 url 주소 얻어오기
+        document.write("현재 문서 주소는 " + location.href + '입니다.<br />');
+        //2.브라우저에 새 url 주소 적용
+        function urlChk(val){
+            location.href = val;
+        }
+    </script>
+     <input type="button" onclick="urlChk('0621.html')" value="url 변경적용">
+     <br>
+</body>
+</html>

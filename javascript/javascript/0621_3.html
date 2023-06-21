@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트(회원가입)</title>
+    <script>
+
+
+        //이메일 체크 정규식 - 보통 따로 빼서 확인하는 경우가 많다
+        //회사에서 어디 사이트의 이메일은 받지 않겠다라고 하는 것도 여기서 처리
+        function isEmail(asValue){
+
+            var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
+            //([-_.]?[0-9a-zA-Z])는 그룹 -> 0-9까지의 숫자영문대소문자가 오는데-_. 가 안올수도 올수도 있다 
+            //?는 0회또는 1회 반복 
+            //없어도 되고 1번이상 와도 된다는 뜻
+            //* 는 0회이상 반복가능
+            // \.는 이스케이프문자처럼 점(.)을 문자로 쓰게하겠다는 뜻 -> .을 꼭 포함해야함
+            return regExp.test(asValue);
+
+        }
+
+        //핸드폰번호 체크 정규식
+        function isCell(asValue){
+            var regExp =/^01([0|1|6|7|9])-?([0-9]{3,4})-?([0-9]{4})$/;  //([0-9]{4})를 \d{4}로 해도 됨
+            return regExp.test(asValue);
+        }
+
+        //아이디나 비밀번호같이 회원가입할떄만 사용되는 것들은 함수 하나에 공통으로 구현하는데 이메일같은것은
+        //회사 업무에서 사용할 수도있고 특정사이트에서오는 이메일은 안받도록 회사ㅊ정책이 있는등 여러가지 면에서 쓰이는 경우 따로 함수를 뺴서 구현한다
+
+        function validate(){
+            //아이디 패턴
+            var idPattern = /^[a-zA-Z0-9-_]{6,20}$/;         // /[a-zA-Z0-9][_-]{6,20}/; //[조건]{반복회수,개수}   
+            //[a-zA-Z0-9_-]으로 했엇을 경우 특수문자만 연속적으로 입력했을 때 걸러지지 않았다 ->[_-]를 따로빼서 지정해줘야함
+
+            //비밀번호 패턴
+            var pwPattern = /^[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{6,20}$/;
+
+            //이름패턴
+            var namePattern = /^[a-zA-Z가-힣]*$/;  // 한글만입력받으려고 할때 ->/^[가-힣]$/;
+            
+            //날짜패턴
+            var datePattern = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/; 
+             //년-월-일
+             //년->(19|20)\d{2} - 앞에 19나 20이 오면 뒤에 2자리 숫자가 온다(0~99까지)
+             //월 -> (0[1-9]|1[012])  -
+             //대괄호[] 안에 쓰여진것은 띄어쓰기 없어서 하나하나로 각각 으로 판단함
+             //일->0[1-9] 앞에 0이 오면 뒤에1~9까지올수 있다, [12][0-9]는 앞이 일떄 뒤에0~9사이숫자, 앞이2일때 뒤에0~9사이 숫자가 온다
+
+            //패턴 입력하기 전 값이 입력되었는지 확인
+            //아이디 입력체크
+            if(document.form1.userid.value.trim() == ""){ //trim()으로 공백을 제거했는데 아무것도 없으면 아무것도 입력안했다는 뜻
+                alert("아이디를 입력하세요.");
+                document.form1.userid.focus();
+                return;
+            }
+
+            if(!idPattern.test(document.form1.userid.value)){ //idPattern.test(document.form1.userid.value -> idPattern이 뒤에있는 값에 포함되는가 -> 포함되므로 !붙여서 부정
+                alert("아이디는 6~20자로 영문 대소문자, 숫자, 특수기호(-,_)만 사용가능합니다.");
+                //원래id는 잘 안날리지만 여기서는 한번 해봄
+                document.form1.userid.value = "";
+                document.form1.userid.focus();
+                return;
+            }
+
+            if(document.form1.pwd1.value.trim() == ""){
+                alert("비밀번호를 입력하세요.");
+                document.form1.pwd1.value ="";
+                document.form1.pwd1.focus();
+                return;
+            }
+
+            if(!pwPattern.test(document.form1.pwd1.value)){
+                alert("비밀번호는 6~20자 영문 대소문자, 숫자, 특수문자로 사용하세요.");
+                document.form1.pwd1.value = "";
+                document.form1.pwd1.focus();
+                return;
+
+            }
+
+            //비밀번호 확인을 입력했는지
+            if(document.form1.pwd2.value.trim() == ""){
+                alert("비밀번호확인을 입력하세요.");
+                document.form1.pwd2.value = "";
+                document.form1.pwd2.focus();
+                return;
+            }
+            //비밀번호 확인에 비밀번호와 같게 입력되었는지 확인
+            if(document.form1.pwd1.value != document.form1.pwd2.value){
+                alert("비밀번호를 다시 한번 확인하세요.");
+                document.form1.pwd1.focus();  //여기서 틀렸을때 커서를 pwd1로 가게할건지 pwd2로 가게 할 건지는 회사정책/내마음 에 따라 달라짐
+                return;
+            }
+            //hidden에 담아서 보내기
+            document.form1.pwd.value = document.form1.pwd1.value;
+
+            //이름을 입력했는지 확인
+            if(document.form1.name.value.trim() == ""){
+                alert("이름을 입력하세요.");
+                document.form1.name.focus();
+                return;
+            }
+
+            //이름이 2글자 이상인지
+            if(document.form1.name.value.trim().length < 2){
+                alert("이름은 최소 2글자 이상 입력하세요.");
+                document.form1.name.focus();
+                return;
+            }
+
+            //이름에 한글, 대소문자 이외의 것을 입력했을 때 경고
+            if(!namePattern.test(document.form1.name.value.trim())){
+                alert("이름은 한글과 영문 대소문자만 가능합니다.");
+                document.form1.name.focus();
+                return;
+            }
+
+            if(document.form1.addr.value.trim() == "" || document.form1.addr.value.trim().length < 2){
+                alert("주소를 입력하세요.");
+                document.form1.addr.focus();
+                return;
+            }
+
+            if(document.form1.birthday.value.trim() == ""){
+                alert("생일을 입력하세요.");
+                document.form1.birthday.focus();
+                return;
+            }
+
+            //패턴으로 적용
+            //패턴이 맞지 않으면 경고창 뜨게하기
+            if(!datePattern.test(document.form1.birthday.value)){
+                alert("생일의 날짜 형식을 확인하세요.");
+                document.form1.birthday.focus();
+                return;
+            }
+
+            //이메일 주소 체크 isEmail
+            if(document.form1.email.value.trim() == "" || document.form1.email.value.trim().length < 5){  //공백이거나 5글자 미만이면 경고뜨게하기  ,trim()처리안해주면 공백도 값으로 들어감
+                alert("이메일 주소를 입력하세요.");
+                document.form1.email.focus();
+                return;
+            }
+            //아이디 같은 경우에는 사용자가 입력한게 어떻게 틀린지 확인할 수 있도록 value에 ""처리 안해서 입력한게 안지워지게해서 확인할 수 있도록한다
+            //value를 떙떙이로 처리한다가 무슨말??
+
+            if(!isEmail(document.form1.email.value.trim())){
+                alert("이메일 주소를 확인하세요.");
+                document.form1.email.focus();
+                return;
+            }
+
+            //핸드폰번호 체크 isCell
+            if(document.form1.phone.value.trim() == "" || document.form1.phone.value.trim().length < 10){
+                alert("전화번호를 입력하세요.");
+                document.form1.phone.focus();
+                return;
+            }
+
+            if(!isCell(document.form1.phone.value.trim())){
+                alert("전화번호를 확인하세요.");
+                document.form1.phone.focus();
+                return;
+            }
+
+            if(confirm("회원가입을 하시겠습니까?")){ //확인 누르면 true, 취소는false
+
+                document.form1.action = "0621.html";
+                document.form1.submit();
+            }
+        }    
+
+    </script>
+</head>
+<body>
+    <h3>회원가입</h3>
+    <form name="form1" method="get" action="0621.html">
+        아이디(6~20 문자) :
+        <input type="text" id="userid" name="userid" maxlength="20"><br>
+        비밀번호 : 
+        <input type="password" id="pwd1" name="pwd1" maxlength="20"><br>
+        비밀번호 확인: 
+        <input type="password" id="pwd2" name="pwd2" maxlength="20"><br>
+        이름 :
+        <input type="text" id="name" name="name" maxlength="20"><br>
+        주소 : 
+        <input type="text" id="addr" name="addr" maxlength="20"><br>
+        생일 : 
+        <input type="date" id="birthday" name="birthday" ><br>
+        이메일 :
+        <input type="text" id="email" name="email"><br>
+        휴대폰 :
+        <input type="text" id="phone" name="phone"><br>
+        <br>
+        <input type="button" value="확 인" onclick="validate()">
+        &nbsp;
+        <input type="reset" value="다시입력">
+        <input type="hidden" name="pwd" id="pwd" value=""> <!--여기서 id는 의미가 없다-->
+
+
+    </form>
+
+</body>
+</html>

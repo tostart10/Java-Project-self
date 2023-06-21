@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>자바스크립트</title>
+    <script>
+        function textsStyle(){
+            document.getElementById("msg").style.color="blue";
+            document.getElementById("msg").style.fontSize = "30px";
+            document.getElementById("msg").style.fontStyle = "italic";
+        }
+
+        function textHidden(){
+            document.getElementById("msg").style.visibility = "hidden";
+
+        }
+
+        function textVisible(){
+            document.getElementById("msg").style.visibility = "visible";
+        }
+
+    </script>
+</head>
+<body>
+    <!--문서 객체 스타일 변경하기-->
+    <p id="msg">문서 객체 스타일 변경하기</p>
+    <input type="button" onclick="textsStyle()" value="텍스트 스타일 변경">
+    &nbsp;
+    <input type="button" onclick="textHidden()" value="텍스트 숨기기">
+    &nbsp;
+    <input type="button" onclick="textVisible()" value="텍스트 보이기">
+    <br><br>
+   
+     <!--history 기능-->
+    <input type="button" onclick="goBack()" value="이전페이지로 가기">
+    <script>
+        function goBack(){
+            //window.history.back(); 방법1
+            window.history.go(-1);
+        }
+    </script>
+</body>
+</html>
