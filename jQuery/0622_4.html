@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> 
+    <script>
+        $(function(){  //이거의 뜻 -> 페이지가 다 로드된 다음에 이안의 것들을 실행
+            var items = $("li"); //li태그 요소 전체를 변수 item에 담는것
+            //getElementsByTagName() 과 같은것 임
+
+            $("button").on("click", function(){
+                $("#len").text("현재 페이지의 <li>태그는 총" + items.length+ "개 입니다."); //$("#len")에서 #으로 시작했다는 것 = id (#는 id를 의미) -> id가 len인것에 적용하겠다
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>li요소 갯수 구하기</h3>
+
+    <ul>
+        <li>첫번째</li>
+        <li>두번째</li>
+        <li>세번째</li>
+        <li>네번째</li>
+        <li>다섯번째</li>
+    </ul>
+    <ul>
+        <li>여섯번째</li>
+        <li>일곱번째</li>
+        <li>여덟번째</li>
+    </ul>
+    <button>li 갯수는</button>
+    <p id="len"></p>
+    
+</body>
+</html>

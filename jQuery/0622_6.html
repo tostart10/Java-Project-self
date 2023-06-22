@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>jQuery</title>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!--cdn방식-->
+    <script>
+        $(function(){
+
+          /*  $("button").on("click", function(){
+                //$("#msg").find("li").eq(1).html("두번째 아이템 선택하셨습니다.");//값이 있으므로setter
+                //아이디가 msg 인것에서 li태그들을 찾아 인덱스값(eq(1))에 html적용 
+
+                //방법2 지금까지 적용한거는 끝냄
+               // $("#msg").find("li").eq(1).html("두번째 아이템 선택하셨습니다.").end().eq(2).html("세번째 아이템을 선택하셨습니다.");
+                //id가 msg인것을 찾고 그안의 li들을 찾고 인덱스값이 1인 html을 가져와라
+                //그리고 지금 한거를 끝내고 돌아갈거임 -> end()
+                //end()로 돌아가면 $("#msg").find("li")까지로 돌아옴
+                //.eq(2).html("세번째 아이템을 선택하셨습니다."); 을 실행하게되어 세번째 요소에 적용이된다
+                //만약 ene()를 쓰지않으면 .eq(2).html("세번째 아이템을 선택하셨습니다.");는 적용되지 않는다.
+            });
+            */
+                    //getter
+                    //크기 읽어오기 버튼을 누르면 노란상자의 크기를 읽어와 출력해주는 기능 구현
+                $("#getter").on("click", function(){
+                    // var size = "너비는 " + $("#box").width() + "px이고 높이는" + 
+                    // $("#box").height() + "px입니다.";
+                    // $("#text").html(size);
+
+                    //변수 사용이해
+                    //만약 getter에서 setter에 잇는 변수를 사용한다면 setter먼저 해야함 ->  변수 w, h는 setter에서 만들어지기 때문
+                   
+                });
+
+                //setter
+                //버튼을 누를때마다 크기가 반씩 작아지게 하기
+                $("#setter").on("click", function(){
+                    w = $("#box").width();  //전역변수
+                    h = $("#box").height();
+
+                    $("#box").width(w/2).height(h/2);
+
+                    var size = "너비는 " + $("#box").width() + "px이고 높이는" + 
+                    $("#box").height() + "px입니다.";
+                    $("#text").html(size);
+                });
+
+                $("#imgchk").on("click", function(){
+                    //attr() 메서드는 ()안에 인수가 반드시 와야하는데 
+                    //인수가 하나만 오면 getter
+                    //인수가 여러게 오면 setter의 역할
+                    // var imgSrc = $("img").attr("src");        //getter  img태그안에서 src라는 속성(값)을 가져옴
+                    // $("img").attr("src", "../img/closed.jpg");  //setter
+
+                    //id로 가져오기
+                    var imgSrc = $("#img2").attr("src");        //getter  img태그안에서 src라는 속성(값)을 가져와서 imgSrc변수에 넣어줌
+                    
+                    //버튼 누를떄마다 이미지 바꾸는 기능 
+                    if(imgSrc == "../img/open.jpg"){
+                        imgSrc =  "../img/closed.jpg" ;
+                    }
+                    else{
+                        imgSrc = "../img/open.jpg";
+                    }
+                    $("#img2").attr("src", imgSrc);  //setter    img2라는 id값을 가진 태그의 src값에 imgSrc변수안에 들어있는 값을 넣어줌
+                    
+                });
+        });
+    </script>
+</head>
+<body>
+    <h2>메서드 체이닝</h2>
+    <ul id="msg">
+        <li>첫번째 순서입니다.</li>
+        <li>두번째 순서입니다.</li>
+        <li>세번째 순서입니다.</li>
+    </ul>
+    <button>텍스트 변경</button>
+    <br><br>
+    <h2>width(), heigth() 메서드</h2>
+    <p>버튼을 각각 클릭해 보세요.</p>
+    <button id="getter">크기 읽어오기</button>
+    <button id="setter">크기 결정하기</button>
+    <br><br>
+    <div id="box" style="width: 400px; height: 200px; background-color: yellow;"></div>
+    <p id="text"></p>
+    <br><br>
+    <h2>.attr() 메서드</h2>
+    <button id="imgchk">src속성변경</button>
+    <img id="img" src="../img/open.jpg" style="width: 320px; height: 210px; border: 1px solid blue">
+    <br><br>
+    <img id="img2" src="../img/closed.jpg" style="width: 320px; height: 210px; border: 1px solid blue">
+    <br><br>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery</title>
+    <!--제이쿼리를 사용하려면 반드시 제이쿼리 라이브러리 가져다 붙여야함-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> 
+    <script>
+        $(function(){
+            $("p").on("click", function(){     // p태그요소를 모드 선택함, p태그를 클릭하면 함수가 실행되어 span 태그가 적용되어 span태그에 css(글자크기 28px)가 적용됨
+               // $("span").css("fontSize", "28px"); //span태그 요소를 모두 선택함
+               //$("#jq").css("border", "2px solid orange");
+               $(".jq").css("backgroundColor", "gray"); //".jq" ->점(.)으로 시작하므로 크래스에 적용
+            });
+
+            $("button").on("click", function(){
+                $("img[alt='open']").attr("src","../img/closed.jpg");
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>HTML CSS 적용</h1>
+    
+    <p>오늘부터 <span>jQuery</span>를 시작합니다. <br>
+    위 글자위를 클릭해보세요.</p>
+    
+    
+    <p id="jq">1 오늘부터 jQuery를 시작합니다. <br>
+    위 글자위를 클릭해보세요.</p>
+
+    <p class="jq">2 오늘부터 jQuery를 시작합니다. <br>
+        위 글자위를 클릭해보세요.</p>
+
+    <p class="jq">3 오늘부터 jQuery를 시작합니다. <br>
+        위 글자위를 클릭해보세요.</p>
+
+    <h1>이미지 속성 선택</h1>
+    <img src="../img/open.jpg" alt="open">&nbsp;
+    <img src="../img/open.jpg" alt="open2"><br>
+    <button>이미지를 변경합니다.</button>
+</body>
+</html>

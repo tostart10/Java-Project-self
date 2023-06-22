@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>jQuery</title>
+    <script>
+        function func(){
+            addAttribute();  //여기까지만 하면 아무것도 출력안됨 -> 기존 p태그안에 아무것도 없어서
+            createElement();
+
+        }
+
+        function addAttribute(){
+            document.getElementById("para").setAttribute("style", "color:red");
+            
+
+        }
+
+        function createElement(){
+            var createNode= document.getElementById("para");  //createNode는 para객체를 가지고 있는 것
+            //.getElementById는 하나만 가지고옴-> 만약 여러개가 있으면 첫번째거만 가져옴
+            //insertBefore(newNode, createNode)를 하기 위해 사용됨
+
+
+            //p태그 하나를 만들기 위한 3줄의 코드
+            var newNode = document.createElement("p"); //createElement로 새로운 p태그를 만듦 -> 그러므로 newNode는 새로운 p태그를 가지고 있는것
+            newNode.innerHTML = "새로운 태그 추가입니다.";  //새로운 p태그안에 글씨를 넣어줌
+            newNode.setAttribute("id", "para");  //새로운 p태그의 id값을 para로 설정
+
+
+            
+            document.body.insertBefore(newNode, createNode);  //insertBefore는 기존에 있던거 위에 추가하라는 의미
+            //newNode는 스타일이 적용안되있기 떄문에 새로 생기는 글씨는 빨간색이 적용안됨
+            //스타일이 적용안된 새롭게 생성된 p태그(newNode) 코드가 insertBefore에 의해 기존에 있던 p태그(createNode)의 위줄에 생성된다
+
+            //createNode는 원래 있엇던애
+            //newNode는 새로운거 추가
+
+            //이후 속성추가 버튼을 누르면  insertBefore() 로 기존에 있던 p태그 위에 새로운 p태그를 넣어주고newNode.setAttribute("id", "para");로 지정하게되면
+            //
+        }
+    </script>
+
+</head>
+<body>
+    <h1>아직 생성되지 않은 HTML태그 속성 추가</h1>
+    <button onclick="func()">속성추가</button>
+    <p id="para"></p>
+    
+</body>
+</html>
