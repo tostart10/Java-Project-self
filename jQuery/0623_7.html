@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!--CDN방식으로 라이브러리 불러오기-->
+    <script>
+        $(function(){
+            $("#btn1").on({
+                mouseenter: function(){
+                    $("#text").append("마우스가 버튼 위로 왔습니다.<br />");
+                },
+                click: function(){
+                    $("#text").append("마우스 버튼을 클릭했습니다.<br />");
+                },
+                mouseleave: function(){
+                    $("#text").append("마우스가 버튼을 떠났습니다.<br />");
+                }
+            });
+
+            //클릭했을때
+            $("#btn2").click(function(){
+                $("#clickText").css("color", "red");
+                $("#dblclickText").css("color", "black");
+            });
+
+            //더블클릭 했을때
+            $("#btn2").dblclick(function(){
+                $("#clickText").css("color", "black"); 
+                $("#dblclickText").css("color", "red");   
+            });
+
+            $("#focus").on("focusin", function(event){
+                $(this).css("backgroundColor", "yellow");  //여기서  this는 현재요소 뜻함
+            });
+
+            $("#focus").on("focusout", function(event){
+                $(this).css("backgroundColor", "white");  //여기서  this는 현재요소 뜻함
+            });
+
+            //엔터키를 쳤을 떄 submit하게 하고 싶다 이럴 때 사용하는 기능
+            $("#focus2").on("keypress", function(event){
+                $("#str").html(event.type + " : " + event.which);
+            });
+
+            //보이게하기 -show
+            $("#btn3").on("click", function(){
+                $("#text2").show();
+            });
+
+            //hide
+            $("#btn4").on("click", function(){
+                $("#text2").hide();
+            });
+
+            //토글기능
+            $("#btn5").on("click", function(){
+                $("#text2").toggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>마우스 이벤트</h2>
+    <button id="btn1">마우스 버튼 위로 포커스 이동해보세요.</button>
+    <p id="text"></p>
+    <br><br>
+
+    <button id="btn2">dblclick</button>
+    <p>버튼을 <span id="clickText">클릭</span>하거나,
+         <span id="ddlclickText">더블클릭</span>해보세요.
+    </p>
+
+    <br>
+    <h2>.focusin()  .focusout() 메서드</h2>
+    <input type="text" id="focus">
+    <br>
+    <h2>.keypress() 메서드</h2>
+    <input id="focus2" type="text">  <!--keypress() 는 아스키코드로 지원하므로EBCDIE 코드인 한글은 지원하지 않음-->
+    <p id="str"></p>
+    <br>
+    <h2>,show()  .hide() 메서드</h2>
+    <p>아래 텍스트가 show와 hide를 반복합니다.</p>
+    <p id="text2">이부분이 숨기기도 하고 나타나기도 합니다.</p>
+    <button id="btn3">표시하기</button>
+    <button id="btn4">숨기기</button>
+    <button id="btn5">토글 기능</button>
+
+</body>
+</html>

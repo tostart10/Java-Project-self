@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>회원가입</title>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+  
+    //val() 은 값을 가지고 오는 것
+
+    function checkz() {
+        //정규표현식
+      var getIntro = $("#intro").val().replace(/\s|/gi,'');
+      var hobbyCheck = false;
+      var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+      var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);  //{4,12}로 입력값이 4~12자 사이만 입력하라고 제한을 두었기 떄문에 유효성 검사 함수에서 구현안해줘도 됨
+      var getName= RegExp(/^[가-힣]+$/);
+      var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
+      var buf = new Array(13); //주민등록번호 배열
+ 
+ 
+      //아이디 공백 확인
+      if($.trim($("#tbID").val()) == ""){  //이메일 공백이면 다시 입력  ,$.trim($("#tbID").val() 비교하기전 공백을 제거해주고 비교함
+        alert("아이디 입력바람");
+        $("#tbID").focus();
+        return false;
+      }
+ 
+      if($.trim($("#tbID").val()).length < 4){
+        alert("아이디는 4자 이상이어야 합니다.");
+        $("#tbID").focus();
+        return false;
+      }
+
+      //이름의 유효성 검사
+      if(!getCheck.test($("#tbID").val())){   
+        alert("형식에 맞게 입력해주세요");
+        $("#tbID").val("");
+        $("#tbID").focus();
+        return false;
+      }
+ 
+      //비밀번호
+      if(!getCheck.test($("#tbPwd").val())) {
+      alert("형식에 맞춰서 PW를 입력해줘용");
+      $("#tbPwd").val("");
+      $("#tbPwd").focus();
+      return false;
+      }
+ 
+      //아이디랑 비밀번호랑 같은지
+      if ($("#tbID").val()==($("#tbPwd").val())) {
+      alert("비밀번호가 ID와 똑같으면 안!대!");
+      $("#tbPwd").val("");
+      $("#tbPwd").focus();
+      return false;
+    }
+ 
+      //비밀번호 똑같은지
+      if($("#tbPwd").val() != ($("#cpass").val())){ 
+      alert("비밀번호가 틀렸네용.");
+      $("#tbPwd").val("");
+      $("#cpass").val("");
+      $("#tbPwd").focus();
+      return false;
+     }
+      //이메일 공백 확인
+      if($("#mail").val() == ""){
+        alert("이메일을 입력해주세요");
+        $("#mail").focus();
+        return false;
+      }
+//이메일 유효성 검사
+      if(!getMail.test($("#mail").val())){
+        alert("이메일형식에 맞게 입력해주세요")
+        $("#mail").val("");
+        $("#mail").focus();
+        return false;
+      }
+ 
+      //이름 유효성 
+      if (!getName.test($("#name").val())) {//한글만 입력하도록 함
+        alert("이름 똑띠 쓰세용");
+        $("#name").val("");
+        $("#name").focus();
+        return false;
+      }
+ 
+      //주민번호
+      if(($("#pnum").val() == "") || ($("#nnum").val() == "")){
+        alert("주민등록번호를 입력해주세요");
+        $("#pnum").focus();
+        return false;
+      }
+ 
+      if(check_jumin() ==false){ //check_jumin()는 함수임
+        return false;
+      }
+       //관심분야
+      for(var i=0;i<$('[name="hobby[]"]').length;i++){
+        if($('input:checkbox[name="hobby[]"]').eq(i).is(":checked") == true) { //input타입에서 checkbox 그룹 중에서 이름이 hobby[]인것중에서 인덱스를 가져와서 체크되어있느냐  (:checked는 체크되어 있다는 뜻)
+            //:checked는 체크가 되어 있으면 true를 반환함
+          hobbyCheck = true;   //결론 은 체크가 하나라도 체크되어있으면  true로 for문빠져나가 라는 뜻
+          break;
+            }
+          }
+           if(!hobbyCheck){
+            alert("하나이상 관심분야를 체크해 주세요");
+            return false;
+          }
+ 
+//자기소개란 유효성 검사
+    //공백이 있다면 안됨.
+    if(getIntro==""){
+      alert("자기소개를 입력해주세요");
+      $("#intro").val("");
+      $("#intro").focus();
+      return false;
+    }
+ 
+    //document.form1.submit();
+  }
+   //주민번호 확인 함수
+  function check_jumin() {   //주민번호 패턴은 정해져 있어서 인터넷에 검색하면 나옴
+    var jumins3 = $("#pnum").val() + $("#nnum").val();  //지역변수
+      //주민등록번호 생년월일 전달
+          
+      var fmt = RegExp(/^\d{6}[1234]\d{6}$/);  //포멧 설정   숫자6자리로 시작, 그다음은 1234 중 하나로 시작하고, 그 뒤에 6자리 와야함
+      var buf = new Array(13);
+ 
+      //주민번호 유효성 검사
+      if (!fmt.test(jumins3)) {
+        alert("주민등록번호 형식에 맞게 입력해주세요");
+        $("#pnum").focus();
+        return false;
+      }
+       //주민번호 존재 검사
+      for (var i = 0; i < buf.length; i++){
+        buf[i] = parseInt(jumins3.charAt(i));
+      }
+       var multipliers = [2,3,4,5,6,7,8,9,2,3,4,5];// 밑에 더해주는 12자리 숫자들 
+      var sum = 0;
+ 
+      for (var i = 0; i < 12; i++){
+      sum += (buf[i] *= multipliers[i]);// 배열끼리12번 돌면서 
+    }
+     if ((11 - (sum % 11)) % 10 != buf[12]) {
+      alert("잘못된 주민등록번호 입니다.");
+      $("#pnum").focus();
+      return false;
+    }
+     var birthYear = (jumins3.charAt(6) <= "2") ? "19" : "20";   //1,2 일떄는 19,  이외에는 20
+    birthYear += $("#pnum").val().substr(0, 2);  //년
+    var birthMonth = $("#pnum").val().substr(2, 2);  //월
+    var birthDate = $("#pnum").val().substr(4, 2);  //일
+    var birth = new Date(birthYear, birthMonth, birthDate);  //년월일을 가지고 hidden에 넣어서 보내고 싶다면 쓰는 코드
+             
+    $("#year").val(birthYear);
+    $("#month").val(birthMonth);
+    $("#day").val(birthDate);
+}
+ 
+  </script>
+</head>
+<body>
+<form name="form1" method="get" action="0623.html"> 
+<h2 align="center">회원가입</h2>
+<table align="center" border="3" cellspacing="0"  >
+       <tr>
+          <td colspan="5" height="30" align="center" bgcolor=#000000" span style="color:white;">회원기본정보</td>
+</tr>
+        <tr> 
+          <td width="100">아이디:</td>
+          <td colspan="4"><input type="text" name="id" maxlength="12" id="tbID" > 4~12자리의 영문 대소문자와 숫자로만 입력</td>
+          <!--여기에maxlength="12"가 있어서 위의 함수에서 이거는 구현안해줘도 됨 -->
+          <!--하지만 아이디를 최소 4글자 이상 입력해야하는것은 함수에서 구현해줘야함-->
+       </tr>
+<tr>
+          <td >비밀번호:</td>
+           <td colspan="4"><input type="password" maxlength="12" id="tbPwd" > 4~12자리의 영문 대소문자와 숫자로만 입력</td>
+       </tr>
+       <tr>
+          <td >비밀번호확인:</td>
+           <td colspan="4"><input type="password" id="cpass" maxlength="12"></td>
+</tr>
+<tr>
+          <td>메일주소:</td>
+          <td colspan="4"><input type="text" name="addr" id="mail">
+          예)id@domain.com</td>
+       </tr>
+       <tr>
+          <td>이름:</td>
+          <td colspan="4"><input type="text" name="nam" id="name"></td>
+        </tr>
+       <tr>
+          <td colspan="5" height="30" align="center" bgcolor=#000000" span style="color:white;">개인신상정보</td>
+        </tr>
+<tr>
+          <td>주민등록번호:</td>
+          <td colspan="4"><input type="text" name="jum" id="pnum">-<input type="password" name="jumin" id="nnum">예)123456789</td>
+       </tr>
+<tr>
+          <td >생일:</td>
+          <td colspan="4">
+            <input type="text" autocomplete="OFF" name="nyear" id="year" style="width: 70px" readonly  disabled> 년
+          <input type="text" autocomplete="OFF" name="nmonth" id="month" style="width: 50px" readonly  disabled> 월
+            <input type="text" autocomplete="OFF" name="nday" id="day" style="width: 50px" readonly  disabled> 일
+          </td>
+    </tr>
+<tr>
+      <td>관심분야:</td>
+      <td colspan="4"><input type="checkbox" name="hobby[]" value="컴퓨터" >컴퓨터
+          <input type="checkbox" name="hobby[]" value="인터넷" >인터넷
+         <input type="checkbox" name="hobby[]" value="여행">여행
+         <input type="checkbox" name="hobby[]" value="영화감상">영화감상
+         <input type="checkbox" name="hobby[]" value="음악감상">음악감상
+      </td>
+    </tr>
+<tr>
+          <td width="20" height="100">자기소개:</td>
+          <td colspan="4"><textarea name="my_intro" id="intro" cols="50" rows="5"></textarea></td>
+       </tr>
+    
+ 
+</table>
+ 
+<p align="center">
+        <input type="button" onClick="checkz()" value="회원가입">
+         <input type="reset" value="다시입력">
+  </p>
+ 
+   </form>
+</body>
+ 
+ 
+</html>

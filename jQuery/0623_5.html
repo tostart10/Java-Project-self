@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!--CDN방식으로 라이브러리 불러오기-->
+    <style>
+        .con * {
+            display: block;
+            border: 1px solid gray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#btn1").on("click", function(){
+                $("h4").siblings().css({"border" : "2px solid blue"});
+            });
+
+            $("#btn2").on("click", function(){
+                $("h4").next().css({"border" : "2px solid red"});
+            });
+
+            $("#btn3").on("click", function(){
+                $("ul").children().css({"border" : "2px solid pink"});
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2> .sblings() 메서드</h2>
+    <div class="con">
+        <div>div 위치</div>
+        <h2>h2요소</h2>
+        <h3>h2요소</h3>
+        <h4>h2요소</h4>
+        <h5>h2요소</h5>
+        <h6>h2요소</h6>
+        <p>p 입니다.</p>
+    </div>
+    <button id="btn1">h4 형제요소</button>
+    <button id="btn2">h4 next요소</button>
+    <br><br>
+
+    
+    <h2>.childern() 메서드</h2>
+    <div class="con">
+        <div>div 요소
+            <ul>ul 태그
+                <li>li첫번째</li>
+                <li>li두번째
+                    <p>p태그
+                        <span>span태그</span>
+                    </p>
+                </li>
+                <li>li세번째
+                    <p>li세번째p</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button id="btn3">ul태그의 자식요소</button>
+    
+</body>
+</html>

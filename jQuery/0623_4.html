@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!--CDN방식으로 라이브러리 불러오기-->
+    <style>
+        .con * {
+            display: block;
+            border: 1px solid gray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#btn1").on("click", function(){
+                $("p").parent().css({"border" : "2px solid red"});
+                //p태그의 부모를 찾아서 css를 적용
+            });
+
+            $("#btn2").on("click", function(){
+                $("p").parents("div").css({"border" : "2px solid brown"});
+                //parent() 와 parents() 구분하기!!!
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>.parent() 메서드</h2>
+    <div class="con">
+        <div>div 요소
+            <ul>ul 태그
+                <li>li첫번째</li>
+                <li>li두번째
+                    <p>p태그
+                        <span>span태그</span>
+                    </p>
+                </li>
+                <li>li세번째</li>
+            </ul>
+        </div>
+    </div>
+    <button id="btn1">부모 요소</button>
+    <button id="btn2">부모 요소2</button>
+    
+</body>
+</html>

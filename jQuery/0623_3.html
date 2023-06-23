@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!--CDN방식으로 라이브러리 불러오기-->
+    <script>
+        //제이쿼리에서는 아이디, 클래스, 태그가 많이 쓰임
+        //서버에 넘어갈때는 name으로 넘어감
+        $(function(){
+            var data;
+
+            $("#btn1").on("click", function(){
+                data = $(".content").detach();
+            });
+
+            $("#btn2").on("click", function(){
+                $("#container").append(data);  //원상태로 가져다 놓으라는 의미
+            });
+
+            $("#btn3").on("click", function(){
+                $("#con").empty(); //id가 con으로 되어있는 것의 자식요소를 삭제하겠다는 의미 
+            });
+
+            //span태그를 기준으로 부모요소를 삭제 (나를 감싸고 있는 태그를 삭제)
+            $("#btn4").on("click", function(){
+                $("span").unwrap(); 
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>.detach() 메서드</h2>
+    <div id="container">
+        <div>첫번째 순서입니다.</div>
+        <div class="content">두번째 순서입니다.</div>
+        <div class="content">세번째 순서입니다.</div>
+    </div>
+    <br>
+    <button id="btn1">삭제</button>
+    <button id="btn2">복구</button>
+    <br><br>
+    <h2>.empty()메서드  .unwrap() 메서드</h2>
+    <div id="con" style="border: solid 3px blue; padding: 5px;">
+        <div>첫번째 입니다</div>
+        <div>두번째 입니다</div>
+        <div>세번째 입니다</div>
+    </div>
+    <button id="btn3">자식삭제</button>
+
+    <br><br>
+    <h2>.unwrap() 메서드</h2>
+    <div id="con" style="border: solid 3px blue; padding: 5px;">
+        <div><span>첫번째 </span>입니다.</div>
+        <div><span>두번째 </span>입니다.</div>
+        <div><span>세번째 </span>입니다.</div>
+    </div>
+    <button id="btn4">부모삭제</button>
+
+
+</body>
+</html>
